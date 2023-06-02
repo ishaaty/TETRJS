@@ -1,3 +1,10 @@
 html {
     justify-content: center;
+    background-color: black;
+}
+
+body {
+    width: 1000px;
+    height: 100px;
+    background-color: rgb(1, 1, 94);
 }
