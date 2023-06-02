@@ -1,10 +1,36 @@
 html {
     justify-content: center;
+    text-align: center;
     background-color: black;
 }
 
 body {
     width: 1000px;
-    height: 100px;
-    background-color: rgb(1, 1, 94);
+    height: 800px;
+    background-color: blue;
+    margin: auto auto;
+    border-radius: 50px;
+}
+
+h1 {
+    padding: 20px;
+    color: white;
+    font-size: 60px;
+}
+
+button {
+    background-color: black;
+    display:block;
+    margin: auto auto;
+    font-size: 20px;;
+    height: 40px;
+    width: 60px;
+    margin-top: 100px;
+    border-radius: 10px;
+    color: white;
+}
+
+img {
+    margin-top: 50px;
+    height: 200px;
 }
