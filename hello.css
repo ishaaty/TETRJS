@@ -20,7 +20,7 @@ h1 {
 
 button {
     background-color: black;
-    display:block;
+    /* display:block; */
     margin: auto auto;
     font-size: 20px;;
     height: 40px;
