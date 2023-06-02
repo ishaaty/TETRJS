@@ -18,6 +18,7 @@ class Pixel {
         ctx.fill();
         ctx.closePath();
     }
+    
     makeOrColorGrid(xMin, yMin, xMax, yMax, inc, color) {
         // making vertical lines
         for (let xUpdate = xMin; xUpdate < xMax; xUpdate += inc) {
@@ -71,7 +72,6 @@ window.addEventListener("load", function () {
     let pixelGrid = pixelsList[0]; // contains coordinates (0,0)
     pixelGrid.changeColor("black");
     pixelGrid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 40);
-    }
 });
 
 
