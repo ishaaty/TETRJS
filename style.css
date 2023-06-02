@@ -5,32 +5,43 @@ html {
 }
 
 body {
-    width: 1000px;
+    width: 1800px;
     height: 800px;
-    background-color: blue;
     margin: auto auto;
-    border-radius: 50px;
+    background-color: rgb(3, 3, 151);
 }
 
 h1 {
-    padding: 20px;
+    margin-top: 0px;
     color: white;
     font-size: 60px;
 }
 
 button {
     background-color: black;
-    /* display:block; */
+    border-color: black;
     margin: auto auto;
     font-size: 20px;;
     height: 40px;
     width: 60px;
-    margin-top: 100px;
+    margin-top: 20px;
     border-radius: 10px;
+    border-style:outset;
     color: white;
+}
+
+button:hover {
+    border-color: grey;
+}
+
+button:active {
+    border-style: inset;
+    background-color: rgb(32, 32, 103);
 }
 
 img {
     margin-top: 50px;
     height: 200px;
+    border: 14px solid;
+    border-color: rgb(18, 18, 117);
 }
