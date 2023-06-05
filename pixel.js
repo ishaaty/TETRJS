@@ -10,11 +10,21 @@ class Pixel {
     xCoordinate;
     yCoordinate;
     color;
+    isAvailable;
 
     constructor (xCoordinate, yCoordinate, color){
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
         this.color = color || "white";
+        this.isAvailable = false;
+    }
+
+    changeAvailability() {
+        if (this.isAvailable == false){
+            this.isAvailable = true;
+        } else {
+            this.isAvailable = false;
+        }
     }
 
     changeColor(color){
