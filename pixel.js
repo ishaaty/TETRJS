@@ -52,7 +52,6 @@ class Block {
     pixelList;
 
     constructor (startX, startY, grid){
-        // this is for square ONLY right now
         this.grid = grid;
         this.pixelList = [];
         this.pixelList.push(new Pixel(startX, startY));
@@ -73,9 +72,9 @@ class Block {
             
             this.pixelList[i].yCoordinate = newY;
 
-            // if (this.pixelList[this.pixelList.length-1].yCoordinate == canvas.height ){
-            //     console.log()
-            // }
+            if (newY == canvas.height){
+                return -1;
+            }
 
         }
     }
