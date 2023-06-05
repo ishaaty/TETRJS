@@ -52,15 +52,10 @@ class Block {
     pixelList;
 
     constructor (startX, startY, grid){
-        // this is for square ONLY right now
         this.grid = grid;
         this.pixelList = [];
         this.pixelList.push(new Pixel(startX, startY));
-        this.pixelList.push(new Pixel(startX + 40, startY));
-        this.pixelList.push(new Pixel(startX, startY - 40));
-        this.pixelList.push(new Pixel(startX + 40, startY - 40));
     }
-
 
     moveDown(){
         for (let i = 0; i < this.pixelList.length; i++) {
@@ -73,6 +68,15 @@ class Block {
             
             this.pixelList[i].yCoordinate = newY;
         }
+    }
+}
+
+class Square extends Block {
+    constructor (startX, startY, grid){
+        super(startX, startY, grid);
+        this.pixelList.push(new Pixel(startX + 40, startY));
+        this.pixelList.push(new Pixel(startX, startY - 40));
+        this.pixelList.push(new Pixel(startX + 40, startY - 40));
     }
 }
 
@@ -92,7 +96,7 @@ window.addEventListener("load", function () {
 
     let v;
 
-    let block = new Block(160, 40, pixelGrid);
+    let block = new Square(160, 40, pixelGrid);
     v = setInterval(function() {
         block.moveDown();
         if (block.pixelList[block.pixelList.length -1].yCoordinate + 40 == canvas.height){
