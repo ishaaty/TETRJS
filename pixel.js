@@ -71,11 +71,6 @@ class Block {
             this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate+1, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate + 38, this.pixelList[i].yCoordinate-1, 1);
             
             this.pixelList[i].yCoordinate = newY;
-
-            if (newY == canvas.height){
-                return -1;
-            }
-
         }
     }
 }
@@ -99,8 +94,7 @@ window.addEventListener("load", function () {
     let block = new Block(160, 40, pixelGrid);
     v = setInterval(function() {
         block.moveDown();
-
-        if (block.yCoordinate + 40 == canvas.height){
+        if (block.pixelList[block.pixelList.length -1].yCoordinate + 40 == canvas.height){
             clearInterval(v);
         }
     }, 1000);
