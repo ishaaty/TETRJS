@@ -69,7 +69,7 @@ class Block {
 
             this.grid.changeColor("white");
             this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate-1, this.pixelList[i].yCoordinate -1, this.pixelList[i].xCoordinate + 38, newY-1, 1);
-            this.grid.changeColor("rgb(3, 3, 151)");
+            this.grid.changeColor("black");
             this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate+1, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate + 38, this.pixelList[i].yCoordinate-1, 1);
             
             this.pixelList[i].yCoordinate = newY;
@@ -121,7 +121,7 @@ class TBlock extends Block {
     }
 }
 
-class ZBlock extends Block {
+class SBlock extends Block {
     constructor (startX, startY, grid){
         super(startX, startY, grid);
         this.pixelList.push(new Pixel(startX - 40, startY));
@@ -130,7 +130,7 @@ class ZBlock extends Block {
     }
 }
 
-class SBlock extends Block {
+class ZBlock extends Block {
     constructor (startX, startY, grid){
         super(startX, startY, grid);
         this.pixelList.push(new Pixel(startX + 40, startY));
@@ -164,23 +164,24 @@ window.addEventListener("load", function () {
 
     let v;
 
-    let block = new Square(160, 40, pixelGrid);
+    let block = new Line(160, 40, pixelGrid);
     v = setInterval(function() {
         block.moveDown();
-        if (block.pixelList[block.pixelList.length -1].yCoordinate + 40 == canvas.height){
-            clearInterval(v);
-            for (let i = 0; i < block.pixelList.length; i++){
-                console.log(block.pixelList[i].isAvailable);
-                block.pixelList[i].changeAvailability();
-                console.log(block.pixelList[i].isAvailable);
+        // if (block.pixelList[block.pixelList.length -1].yCoordinate + 40 == canvas.height){
+        for (let i = 0; i < block.pixelList.length; i++){
+            // also add if block underneath is not available (use isAvailable and changeAvailability)
+            if (block.pixelList[i].yCoordinate >= canvas.height){
+                clearInterval(v);
+                for (let i = 0; i < block.pixelList.length; i++){
+                    console.log(block.pixelList[i].isAvailable);
+                    block.pixelList[i].changeAvailability();
+                    console.log(block.pixelList[i].isAvailable);
+                }
             }
         }
+            
     }, 1000);
       
 });
-
-function nothing(){
-    console.log("tetrjs");
-};
 
 
