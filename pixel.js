@@ -82,18 +82,17 @@ window.addEventListener("load", function () {
     // creating the grid
     let pixelGrid = pixelsList[0]; // contains coordinates (0,0)
     pixelGrid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 40);
-    let i = 0;
 
-    let block = new Block(160, 0, pixelGrid);
     let v;
 
+    let block = new Block(160, 0, pixelGrid);
     v = setInterval(function() {
         block.moveDown();
+
         if (block.yCoordinate == canvas.height){
             clearInterval(v);
         }
-    }, 1000)
-    i++;
+    }, 1000);
       
 });
 
