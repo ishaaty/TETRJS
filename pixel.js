@@ -20,11 +20,7 @@ class Pixel {
     }
 
     changeAvailability() {
-        if (this.isAvailable == false){
-            this.isAvailable = true;
-        } else {
-            this.isAvailable = false;
-        }
+        this.isAvailable = !(this.isAvailable);
     }
 
     changeColor(color){
@@ -78,6 +74,14 @@ class Block {
             
             this.pixelList[i].yCoordinate = newY;
         }
+    }
+
+    moveLeft(){
+
+    }
+
+    moveRight(){
+
     }
 }
 
@@ -165,6 +169,11 @@ window.addEventListener("load", function () {
         block.moveDown();
         if (block.pixelList[block.pixelList.length -1].yCoordinate + 40 == canvas.height){
             clearInterval(v);
+            for (let i = 0; i < block.pixelList.length; i++){
+                console.log(block.pixelList[i].isAvailable);
+                block.pixelList[i].changeAvailability();
+                console.log(block.pixelList[i].isAvailable);
+            }
         }
     }, 1000);
       
