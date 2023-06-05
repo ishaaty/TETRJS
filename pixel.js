@@ -90,6 +90,60 @@ class Square extends Block {
     }
 }
 
+class LBlock extends Block {
+    constructor (startX, startY, grid){
+        super(startX, startY, grid);
+        this.pixelList.push(new Pixel(startX, startY - 40));
+        this.pixelList.push(new Pixel(startX, startY - 80));
+        this.pixelList.push(new Pixel(startX + 40, startY - 80));
+    }
+}
+
+class JBlock extends Block {
+    constructor (startX, startY, grid){
+        super(startX, startY, grid);
+        this.pixelList.push(new Pixel(startX, startY - 40));
+        this.pixelList.push(new Pixel(startX, startY - 80));
+        this.pixelList.push(new Pixel(startX - 40, startY - 80));
+    }
+}
+
+class TBlock extends Block {
+    constructor (startX, startY, grid){
+        super(startX, startY, grid);
+        this.pixelList.push(new Pixel(startX, startY - 40));
+        this.pixelList.push(new Pixel(startX - 40, startY));
+        this.pixelList.push(new Pixel(startX + 40, startY));
+    }
+}
+
+class ZBlock extends Block {
+    constructor (startX, startY, grid){
+        super(startX, startY, grid);
+        this.pixelList.push(new Pixel(startX - 40, startY));
+        this.pixelList.push(new Pixel(startX, startY - 40));
+        this.pixelList.push(new Pixel(startX + 40, startY - 40));
+    }
+}
+
+class SBlock extends Block {
+    constructor (startX, startY, grid){
+        super(startX, startY, grid);
+        this.pixelList.push(new Pixel(startX + 40, startY));
+        this.pixelList.push(new Pixel(startX, startY - 40));
+        this.pixelList.push(new Pixel(startX - 40, startY - 40));
+    }
+}
+
+class Line extends Block {
+    constructor (startX, startY, grid){
+        super(startX, startY, grid);
+        this.pixelList.push(new Pixel(startX, startY - 40));
+        this.pixelList.push(new Pixel(startX, startY - 80));
+        this.pixelList.push(new Pixel(startX, startY - 120));
+    }
+}
+
 for(let x = 0; x <= canvas.height; x += 40){
     for (let y = 0; y <= canvas.width; y += 40){
         let pixel = new Pixel(x, y);
