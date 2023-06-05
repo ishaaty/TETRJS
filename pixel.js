@@ -4,7 +4,6 @@ let currentColor = document.querySelector("#currentColor");
 let clearBtn = document.querySelector("#clear");
 let color = "black";
 let pixelsList = [];
-let selectedArray = [];
 
 class Pixel {
     xCoordinate;
@@ -163,8 +162,30 @@ window.addEventListener("load", function () {
     pixelGrid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 40);
 
     let v;
-
-    let block = new Line(160, 40, pixelGrid);
+    let block;
+    let rand = Math.floor(Math.random() * 7);
+    switch(rand) {
+        case 0:
+            block = new Square(160, 40, pixelGrid);
+            break;
+        case 1:
+            block = new LBlock(160, 40, pixelGrid);
+            break;
+        case 2:
+            block = new JBlock(160, 40, pixelGrid);
+            break;
+        case 3:
+            block = new TBlock(160, 40, pixelGrid);
+            break;
+        case 4:
+            block = new ZBlock(160, 40, pixelGrid);
+            break;
+        case 5:
+            block = new SBlock(160, 40, pixelGrid);
+            break;
+        case 6:
+            block = new Line(160, 40, pixelGrid);
+    }
     v = setInterval(function() {
         block.moveDown();
         // if (block.pixelList[block.pixelList.length -1].yCoordinate + 40 == canvas.height){
