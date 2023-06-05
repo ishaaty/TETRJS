@@ -52,6 +52,7 @@ class Block {
     pixelList;
 
     constructor (startX, startY, grid){
+        // this is for square ONLY right now
         this.grid = grid;
         this.pixelList = [];
         this.pixelList.push(new Pixel(startX, startY));
