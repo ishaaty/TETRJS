@@ -46,26 +46,32 @@ class Pixel {
     }   
 }
 
-class Block extends Pixel {
+class Block {
 
     grid;
+    pixelList;
 
     constructor (startX, startY, grid){
-        super(startX, startY);
         this.grid = grid;
+        this.pixelList = [];
+        this.pixelList.push(new Pixel(startX, startY));
+        this.pixelList.push(new Pixel(startX + 40, startY));
+        this.pixelList.push(new Pixel(startX, startY - 40));
+        this.pixelList.push(new Pixel(startX + 40, startY - 40));
     }
 
 
     moveDown(){
-        let newY = this.yCoordinate + 40;
+        for (let i = 0; i < this.pixelList.length; i++) {
+            let newY = this.pixelList[i].yCoordinate + 40;
 
-        this.grid.changeColor("white");
-        this.grid.makeOrColorGrid(this.xCoordinate-1, this.yCoordinate -1, this.xCoordinate + 38, newY-1, 1);
-        this.grid.changeColor("rgb(3, 3, 151)");
-        this.grid.makeOrColorGrid(this.xCoordinate+1, this.yCoordinate-38, this.xCoordinate + 38, this.yCoordinate-1, 1);
-        
-        this.yCoordinate = newY;
-
+            this.grid.changeColor("white");
+            this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate-1, this.pixelList[i].yCoordinate -1, this.pixelList[i].xCoordinate + 38, newY-1, 1);
+            this.grid.changeColor("rgb(3, 3, 151)");
+            this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate+1, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate + 38, this.pixelList[i].yCoordinate-1, 1);
+            
+            this.pixelList[i].yCoordinate = newY;
+        }
     }
 }
 
