@@ -72,7 +72,6 @@ class Block {
             this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate+1, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate + 38, this.pixelList[i].yCoordinate-1, 1);
             
             this.pixelList[i].yCoordinate = newY;
-            this.pixelList[this.pixelList.length -1].yCoordinate
         }
     }
 }
