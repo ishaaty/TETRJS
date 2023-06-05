@@ -32,6 +32,7 @@ button {
 
 button:hover {
     border-color: grey;
+    cursor: pointer;
 }
 
 button:active {
