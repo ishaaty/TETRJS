@@ -13,6 +13,9 @@ for(let x = 0; x <= canvas.height; x += 40){
 
 // left on arrow input
 window.addEventListener("keydown", function (e) {
+    if (e.repeat) {
+        return;
+    }
     if (e.key == "ArrowLeft") {
         block.moveLeft();
     }
