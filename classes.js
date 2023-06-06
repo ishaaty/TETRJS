@@ -113,7 +113,7 @@ class Block {
         } 
     }
 
-    quickDrop(block){
+    quickDrop(){
         while (block.pixelList[0].yCoordinate + 40 < canvas.height) {
             this.moveDown();
         }

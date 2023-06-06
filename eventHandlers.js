@@ -11,7 +11,7 @@ for(let x = 0; x <= canvas.height; x += 40){
     }
 }
 
-// left on arrow input
+// movement based on input
 window.addEventListener("keydown", function (e) {
     if (e.repeat) {
         return;
@@ -26,7 +26,7 @@ window.addEventListener("keydown", function (e) {
         block.slowDrop();
     }
     if (e.key == " ") {
-        block.quickDrop(block);
+        block.quickDrop();
     }
 });
 
