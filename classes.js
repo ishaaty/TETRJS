@@ -106,6 +106,18 @@ class Block {
             this.pixelList[i].xCoordinate = newX;
         } 
     }
+
+    slowDrop(){
+        if (block.pixelList[0].yCoordinate + 40 < canvas.height) {
+            this.moveDown();
+        } 
+    }
+
+    quickDrop(block){
+        while (block.pixelList[0].yCoordinate + 40 < canvas.height) {
+            this.moveDown();
+        }
+    }
 }
 
 class Square extends Block {
@@ -119,19 +131,19 @@ class Square extends Block {
 
 class LBlock extends Block {
     constructor (startX, startY, grid){
-        super(startX, startY, grid);
+        super(startX, startY + 40, grid);
+        this.pixelList.push(new Pixel(startX, startY));
         this.pixelList.push(new Pixel(startX, startY - 40));
-        this.pixelList.push(new Pixel(startX, startY - 80));
-        this.pixelList.push(new Pixel(startX + 40, startY - 80));
+        this.pixelList.push(new Pixel(startX + 40, startY - 40));
     }
 }
 
 class JBlock extends Block {
     constructor (startX, startY, grid){
-        super(startX, startY, grid);
+        super(startX, startY + 40, grid);
+        this.pixelList.push(new Pixel(startX, startY));
         this.pixelList.push(new Pixel(startX, startY - 40));
-        this.pixelList.push(new Pixel(startX, startY - 80));
-        this.pixelList.push(new Pixel(startX - 40, startY - 80));
+        this.pixelList.push(new Pixel(startX - 40, startY - 40));
     }
 }
 
@@ -164,9 +176,9 @@ class ZBlock extends Block {
 
 class Line extends Block {
     constructor (startX, startY, grid){
-        super(startX, startY, grid);
+        super(startX, startY + 80, grid);
+        this.pixelList.push(new Pixel(startX, startY + 40));
+        this.pixelList.push(new Pixel(startX, startY));
         this.pixelList.push(new Pixel(startX, startY - 40));
-        this.pixelList.push(new Pixel(startX, startY - 80));
-        this.pixelList.push(new Pixel(startX, startY - 120));
     }
 }

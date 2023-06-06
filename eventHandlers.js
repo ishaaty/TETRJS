@@ -22,6 +22,12 @@ window.addEventListener("keydown", function (e) {
     if (e.key == "ArrowRight") {
         block.moveRight();
     }
+    if (e.key == "ArrowDown") {
+        block.slowDrop();
+    }
+    if (e.key == " ") {
+        block.quickDrop(block);
+    }
 });
 
 // doing this as a temp fix, need a better way of handling what blocks are active
