@@ -114,8 +114,20 @@ class Block {
     }
 
     quickDrop(){
-        while (block.pixelList[0].yCoordinate + 40 < canvas.height) {
-            this.moveDown();
+        // while (block.pixelList[0].yCoordinate + 40 < canvas.height) {
+        //     this.moveDown();
+        // }
+        let distToBottom = canvas.height - this.pixelList[0].yCoordinate;
+        for (let i = 0; i < this.pixelList.length; i++) {
+            let newY = this.pixelList[i].yCoordinate + distToBottom - 40;
+
+            this.grid.changeColor("black");
+            this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate+1, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate + 38, this.pixelList[i].yCoordinate-1, 1);
+            
+            this.pixelList[i].yCoordinate = newY;
+
+            this.grid.changeColor("white");
+            this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate-1, this.pixelList[i].yCoordinate -1, this.pixelList[i].xCoordinate + 38, newY-1, 1);
         }
     }
 }
