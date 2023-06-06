@@ -9,11 +9,12 @@ canvas {
     border: 3px solid white;
     padding-left: 0;
     padding-right: 0;
-    margin-left: 500px;
+    margin-top: 150px;
+    margin-left: 700px;
     margin-right: auto;
     display: block;
     padding: 0;
-    margin: auto;
+    /* margin: auto; */
     display: block;
     /* position: absolute; */
     top: 0;

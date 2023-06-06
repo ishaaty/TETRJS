@@ -76,7 +76,9 @@ class Block {
     }
 
     moveLeft(){
-
+        for (let i = 0; i < this.pixelList.length; i++) {
+            this.pixelList[i].xCoordinate -= 40;
+        }
     }
 
     moveRight(){
@@ -204,5 +206,6 @@ window.addEventListener("load", function () {
     }, 1000);
       
 });
+
 
 
