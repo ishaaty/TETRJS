@@ -1,3 +1,5 @@
+let canvas = document.querySelector("canvas");
+
 class Pixel {
     xCoordinate;
     yCoordinate;
@@ -72,16 +74,16 @@ class Block {
         // if (this.pixelList[0].xCoordinate >= canvas.width || this.pixelList[this.pixelList.length-1].yCoordinate <= 40) {
         //     return;
         // }
+
         for (let i = 0; i < this.pixelList.length; i++) {
-            let newX = this.pixelList[i].xCoordinate + 40;
-            this.grid.changeColor("white");
-            this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate-1, this.pixelList[i].yCoordinate-1, newX-1, this.pixelList[i].yCoordinate+38, 1);
-            // not erasing the old location
-            this.grid.changeColor("black");
-            this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate+1, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate + 38, this.pixelList[i].yCoordinate-1, 1);
-            
-            this.pixelList[i].xCoordinate = newX;
+            if (this.pixelList[i].xCoordinate + 40 >= canvas.width){
+                return;
+            }
         }
+
+        for (let i = 0; i < this.pixelList.length; i++) {
+            this.pixelList[i].xCoordinate += 40;
+        } 
     }
 
     moveLeft(){
@@ -89,14 +91,14 @@ class Block {
         //     return;
         // }
         for (let i = 0; i < this.pixelList.length; i++) {
-            let newX = this.pixelList[i].xCoordinate - 40;
-            this.grid.changeColor("white");
-            this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate-1, this.pixelList[i].yCoordinate-1, newX-1, this.pixelList[i].yCoordinate+38, 1);
-            this.grid.changeColor("black");
-            this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate+1, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate + 38, this.pixelList[i].yCoordinate-1, 1);
-            
-            this.pixelList[i].xCoordinate = newX;
+            if (this.pixelList[i].xCoordinate - 40 < 0){
+                return;
+            }
         }
+
+        for (let i = 0; i < this.pixelList.length; i++) {
+            this.pixelList[i].xCoordinate -= 40;
+        } 
     }
 }
 

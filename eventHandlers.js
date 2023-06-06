@@ -1,4 +1,3 @@
-let canvas = document.querySelector("canvas");
 let ctx = canvas.getContext("2d");
 let currentColor = document.querySelector("#currentColor");
 let clearBtn = document.querySelector("#clear");
