@@ -28,6 +28,13 @@ window.addEventListener("load", function () {
     let pixelGrid = gridList[0]; // contains coordinates (0,0)
     pixelGrid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 40);
 
+    createBlock(pixelGrid);
+    
+      
+});
+
+
+function createBlock(pixelGrid) {
     let v;
     let rand = Math.floor(Math.random() * 7);
     switch(rand) {
@@ -68,8 +75,5 @@ window.addEventListener("load", function () {
         }
             
     }, 1000);
-      
-});
-
-
+}
 
