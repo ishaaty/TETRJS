@@ -9,23 +9,40 @@ canvas {
     border: 3px solid white;
     padding-left: 0;
     padding-right: 0;
-    margin-top: 150px;
-    margin-left: 700px;
+    margin-top: 100px;
+    margin-left: 800px;
     margin-right: auto;
     display: block;
     padding: 0;
-    /* margin: auto; */
     display: block;
-    /* position: absolute; */
+    position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     
-    /* -webkit-user-drag: none; 
-    -khtml-user-drag: none; 
-    -moz-user-drag: none; 
-    -o-user-drag: none; 
-    -user-drag: none;  */
-    
+}
+
+p, h2 {
+    color: white;
+    display: grid;
+    grid-column: 1;
+    margin-left: 200px;
+    margin-bottom: 0px;
+}
+
+h2 {
+    /*leaving space for next block, if doesn't happen, move up*/
+    margin-top: 750px;
+    font-size: 1.4em;
+}
+
+p {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+.container {
+    display : grid;
+    grid-template-columns: 600px 200px;
 }
