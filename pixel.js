@@ -75,12 +75,35 @@ class Block {
         }
     }
 
-    moveLeft(){
-
+    moveRight(){
+        // if (this.pixelList[0].xCoordinate >= canvas.width || this.pixelList[this.pixelList.length-1].yCoordinate <= 40) {
+        //     return;
+        // }
+        for (let i = 0; i < this.pixelList.length; i++) {
+            let newX = this.pixelList[i].xCoordinate + 40;
+            this.grid.changeColor("white");
+            this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate-1, this.pixelList[i].yCoordinate-1, newX-1, this.pixelList[i].yCoordinate+38, 1);
+            // not erasing the old location
+            this.grid.changeColor("black");
+            this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate+1, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate + 38, this.pixelList[i].yCoordinate-1, 1);
+            
+            this.pixelList[i].xCoordinate = newX;
+        }
     }
 
-    moveRight(){
-
+    moveLeft(){
+        // if (block.pixelList[0].xCoordinate >= canvas.width || block.pixelList[this.pixelList.length-1].yCoordinate <= 40) {
+        //     return;
+        // }
+        for (let i = 0; i < this.pixelList.length; i++) {
+            let newX = this.pixelList[i].xCoordinate - 40;
+            this.grid.changeColor("white");
+            this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate-1, this.pixelList[i].yCoordinate-1, newX-1, this.pixelList[i].yCoordinate+38, 1);
+            this.grid.changeColor("black");
+            this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate+1, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate + 38, this.pixelList[i].yCoordinate-1, 1);
+            
+            this.pixelList[i].xCoordinate = newX;
+        }
     }
 }
 
@@ -154,15 +177,24 @@ for(let x = 0; x <= canvas.height; x += 40){
     }
 }
 
+// left on arrow input
+window.addEventListener("keydown", function (e) {
+    if (e.key == "ArrowLeft") {
+        block.moveLeft();
+    }
+    if (e.key == "ArrowRight") {
+        block.moveRight();
+    }
+});
 
-
+// doing this as a temp fix, need a better way of handling what blocks are active
+let block;
 window.addEventListener("load", function () {
     // creating the grid
     let pixelGrid = pixelsList[0]; // contains coordinates (0,0)
     pixelGrid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 40);
 
     let v;
-    let block;
     let rand = Math.floor(Math.random() * 7);
     switch(rand) {
         case 0:
