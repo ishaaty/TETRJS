@@ -4,6 +4,7 @@ let clearBtn = document.querySelector("#clear");
 let color = "black";
 let gridList = [];
 
+
 for(let x = 0; x <= canvas.height; x += 40){
     for (let y = 0; y <= canvas.width; y += 40){
         let pixel = new Pixel(x, y);
