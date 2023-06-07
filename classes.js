@@ -118,6 +118,7 @@ class Block {
         //     this.moveDown();
         // }
         let distToBottom = canvas.height - this.pixelList[0].yCoordinate;
+        
         for (let i = 0; i < this.pixelList.length; i++) {
             let newY = this.pixelList[i].yCoordinate + distToBottom - 40;
 
