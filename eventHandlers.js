@@ -26,6 +26,9 @@ window.addEventListener("keydown", function (e) {
     if (e.key == "ArrowRight") {
         block.moveRight();
     }
+    if (e.key == "ArrowUp") {
+        block.rotate(block);
+    }
     if (e.key == " ") {
         block.quickDrop();
     }

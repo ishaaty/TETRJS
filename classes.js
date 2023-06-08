@@ -126,6 +126,30 @@ class Block {
             this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate-1, this.pixelList[i].yCoordinate -1, this.pixelList[i].xCoordinate + 38, newY-1, 1);
         }
     }
+
+    rotate(block){
+        if (block.rotation == 0) {
+            let centerX = this.pixelList[0].xCoordinate;
+            let centerY = this.pixelList[0].yCoordinate;
+
+            for (let i = 1; i < this.pixelList.length; i++) {
+                let distToCenterX = this.pixelList[i].xCoordinate - centerX;
+                let distToCenterY = this.pixelList[i].yCoordinate - centerY;
+
+                this.grid.changeColor("black");
+                this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate+1, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate + 38, this.pixelList[i].yCoordinate-1, 1);
+            
+                this.pixelList[i].xCoordinate = this.pixelList[0].xCoordinate - distToCenterY;
+                this.pixelList[i].yCoordinate = this.pixelList[0].yCoordinate + distToCenterX;
+
+                this.grid.changeColor("white");
+                this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate-1, this.pixelList[i].yCoordinate-1, this.pixelList[i].xCoordinate + 38, this.pixelList[i].yCoordinate-1, 1);
+            }
+        }
+
+        block.rotation += 1;
+        if (block.rotation == 4) block.rotation = 0;
+    }
 }
 
 class Square extends Block {
@@ -134,6 +158,8 @@ class Square extends Block {
         this.pixelList.push(new Pixel(startX + 40, startY, this.color));
         this.pixelList.push(new Pixel(startX, startY - 40, this.color));
         this.pixelList.push(new Pixel(startX + 40, startY - 40, this.color));
+        
+        this.rotation = 0;
     }
 }
 
@@ -143,6 +169,8 @@ class LBlock extends Block {
         this.pixelList.push(new Pixel(startX, startY, this.color));
         this.pixelList.push(new Pixel(startX, startY - 40, this.color));
         this.pixelList.push(new Pixel(startX + 40, startY - 40, this.color));
+
+        this.rotation = 0;
     }
 }
 
@@ -152,6 +180,8 @@ class JBlock extends Block {
         this.pixelList.push(new Pixel(startX, startY, this.color));
         this.pixelList.push(new Pixel(startX, startY - 40, this.color));
         this.pixelList.push(new Pixel(startX - 40, startY - 40, this.color));
+
+        this.rotation = 0;
     }
 }
 
@@ -161,6 +191,8 @@ class TBlock extends Block {
         this.pixelList.push(new Pixel(startX, startY - 40, this.color));
         this.pixelList.push(new Pixel(startX - 40, startY, this.color));
         this.pixelList.push(new Pixel(startX + 40, startY, this.color));
+
+        this.rotation = 0;
     }
 }
 
@@ -170,6 +202,8 @@ class SBlock extends Block {
         this.pixelList.push(new Pixel(startX - 40, startY, this.color));
         this.pixelList.push(new Pixel(startX, startY - 40, this.color));
         this.pixelList.push(new Pixel(startX + 40, startY - 40, this.color));
+
+        this.rotation = 0;
     }
 }
 
@@ -179,6 +213,8 @@ class ZBlock extends Block {
         this.pixelList.push(new Pixel(startX + 40, startY, this.color));
         this.pixelList.push(new Pixel(startX, startY - 40, this.color));
         this.pixelList.push(new Pixel(startX - 40, startY - 40, this.color));
+
+        this.rotation = 0;
     }
 }
 
@@ -188,5 +224,7 @@ class Line extends Block {
         this.pixelList.push(new Pixel(startX, startY + 40, this.color));
         this.pixelList.push(new Pixel(startX, startY, this.color));
         this.pixelList.push(new Pixel(startX, startY - 40, this.color));
+
+        this.rotation = 0;
     }
 }
