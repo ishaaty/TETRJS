@@ -65,10 +65,12 @@ class Block {
             let newY = this.pixelList[i].yCoordinate + 40;
 
             this.grid.changeColor(this.pixelList[i].color);
-            this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate-1, this.pixelList[i].yCoordinate -1, this.pixelList[i].xCoordinate + 38, newY-1, 1);
+            this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate, this.pixelList[i].yCoordinate -1, this.pixelList[i].xCoordinate + 38, newY-1, 1);
             this.grid.changeColor("black");
             this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate+1, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate + 38, this.pixelList[i].yCoordinate-1, 1);
-            
+            this.grid.changeColor("white");
+            this.grid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 40);
+
             this.pixelList[i].yCoordinate = newY;
         }
     }
