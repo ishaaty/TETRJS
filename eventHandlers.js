@@ -37,13 +37,12 @@ window.addEventListener("load", function () {
     let pixelGrid = gridList[0]; // contains coordinates (0,0)
     pixelGrid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 40);
     createBlock(pixelGrid);
-    // not 100% but progress
     v = setInterval(function () {
         if (!(block.pixelList[0].yCoordinate + 40 <= canvas.height)) {
             console.log("made")
             createBlock(pixelGrid);
         }
-    }, 1000);
+    }, 0);
 });
 
 
