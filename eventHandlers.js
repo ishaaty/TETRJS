@@ -76,8 +76,16 @@ function createBlock(pixelGrid) {
         block.moveDown();
         // if (block.pixelList[block.pixelList.length -1].yCoordinate + 40 == canvas.height){
         for (let i = 0; i < block.pixelList.length; i++) {
-            // also add if block underneath is not available (use isAvailable and changeAvailability)
-            if (block.pixelList[i].yCoordinate >= canvas.height) {
+            let pix;
+            for (let j = 0; j < gridList.length; j++) {
+                if (gridList[j].xCoordinate == block.pixelList[i].xCoordinate && gridList[j].yCoordinate == block.pixelList[i].yCoordinate + 40){
+                    pix = gridList[j];
+                    break;
+                }
+
+            }
+
+            if (block.pixelList[i].yCoordinate >= canvas.height || !(pix.isAvailable())) {
                 clearInterval(v);
                 for (let i = 0; i < block.pixelList.length; i++) {
                     console.log(block.pixelList[i].isAvailable);
