@@ -31,6 +31,7 @@ class Pixel {
 
     makeOrColorGrid(xMin, yMin, xMax, yMax, inc) {
         // making vertical lines
+        let color = this.color;
         for (let xUpdate = xMin; xUpdate < xMax; xUpdate += inc){
             for (let yUpdate = yMin; yUpdate < yMax; yUpdate++){
                 this.fill(xUpdate, yUpdate);
@@ -50,18 +51,20 @@ class Block {
 
     grid;
     pixelList;
+    color;
 
-    constructor (startX, startY, grid){
+    constructor (startX, startY, grid, color){
         this.grid = grid;
         this.pixelList = [];
-        this.pixelList.push(new Pixel(startX, startY));
+        this.color = color || "white";
+        this.pixelList.push(new Pixel(startX, startY, color));
     }
 
     moveDown(){
         for (let i = 0; i < this.pixelList.length; i++) {
             let newY = this.pixelList[i].yCoordinate + 40;
 
-            this.grid.changeColor("white");
+            this.grid.changeColor(this.pixelList[i].color);
             this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate-1, this.pixelList[i].yCoordinate -1, this.pixelList[i].xCoordinate + 38, newY-1, 1);
             this.grid.changeColor("black");
             this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate+1, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate + 38, this.pixelList[i].yCoordinate-1, 1);
@@ -118,6 +121,7 @@ class Block {
         //     this.moveDown();
         // }
         let distToBottom = canvas.height - this.pixelList[0].yCoordinate;
+        
         for (let i = 0; i < this.pixelList.length; i++) {
             let newY = this.pixelList[i].yCoordinate + distToBottom - 40;
 
@@ -134,63 +138,63 @@ class Block {
 
 class Square extends Block {
     constructor (startX, startY, grid){
-        super(startX, startY, grid);
-        this.pixelList.push(new Pixel(startX + 40, startY));
-        this.pixelList.push(new Pixel(startX, startY - 40));
-        this.pixelList.push(new Pixel(startX + 40, startY - 40));
+        super(startX, startY, grid, "#FEFB34");
+        this.pixelList.push(new Pixel(startX + 40, startY, this.color));
+        this.pixelList.push(new Pixel(startX, startY - 40, this.color));
+        this.pixelList.push(new Pixel(startX + 40, startY - 40, this.color));
     }
 }
 
 class LBlock extends Block {
     constructor (startX, startY, grid){
-        super(startX, startY + 40, grid);
-        this.pixelList.push(new Pixel(startX, startY));
-        this.pixelList.push(new Pixel(startX, startY - 40));
-        this.pixelList.push(new Pixel(startX + 40, startY - 40));
+        super(startX, startY + 40, grid, "#FFC82E");
+        this.pixelList.push(new Pixel(startX, startY, this.color));
+        this.pixelList.push(new Pixel(startX, startY - 40, this.color));
+        this.pixelList.push(new Pixel(startX + 40, startY - 40, this.color));
     }
 }
 
 class JBlock extends Block {
     constructor (startX, startY, grid){
-        super(startX, startY + 40, grid);
-        this.pixelList.push(new Pixel(startX, startY));
-        this.pixelList.push(new Pixel(startX, startY - 40));
-        this.pixelList.push(new Pixel(startX - 40, startY - 40));
+        super(startX, startY + 40, grid, "#0341AE");
+        this.pixelList.push(new Pixel(startX, startY, this.color));
+        this.pixelList.push(new Pixel(startX, startY - 40, this.color));
+        this.pixelList.push(new Pixel(startX - 40, startY - 40, this.color));
     }
 }
 
 class TBlock extends Block {
     constructor (startX, startY, grid){
-        super(startX, startY, grid);
-        this.pixelList.push(new Pixel(startX, startY - 40));
-        this.pixelList.push(new Pixel(startX - 40, startY));
-        this.pixelList.push(new Pixel(startX + 40, startY));
+        super(startX, startY, grid, "#DD0AB2");
+        this.pixelList.push(new Pixel(startX, startY - 40, this.color));
+        this.pixelList.push(new Pixel(startX - 40, startY, this.color));
+        this.pixelList.push(new Pixel(startX + 40, startY, this.color));
     }
 }
 
 class SBlock extends Block {
     constructor (startX, startY, grid){
-        super(startX, startY, grid);
-        this.pixelList.push(new Pixel(startX - 40, startY));
-        this.pixelList.push(new Pixel(startX, startY - 40));
-        this.pixelList.push(new Pixel(startX + 40, startY - 40));
+        super(startX, startY, grid, "#53DA3F");
+        this.pixelList.push(new Pixel(startX - 40, startY, this.color));
+        this.pixelList.push(new Pixel(startX, startY - 40, this.color));
+        this.pixelList.push(new Pixel(startX + 40, startY - 40, this.color));
     }
 }
 
 class ZBlock extends Block {
     constructor (startX, startY, grid){
-        super(startX, startY, grid);
-        this.pixelList.push(new Pixel(startX + 40, startY));
-        this.pixelList.push(new Pixel(startX, startY - 40));
-        this.pixelList.push(new Pixel(startX - 40, startY - 40));
+        super(startX, startY, grid, "#FD3F59");
+        this.pixelList.push(new Pixel(startX + 40, startY, this.color));
+        this.pixelList.push(new Pixel(startX, startY - 40, this.color));
+        this.pixelList.push(new Pixel(startX - 40, startY - 40, this.color));
     }
 }
 
 class Line extends Block {
     constructor (startX, startY, grid){
-        super(startX, startY + 80, grid);
-        this.pixelList.push(new Pixel(startX, startY + 40));
-        this.pixelList.push(new Pixel(startX, startY));
-        this.pixelList.push(new Pixel(startX, startY - 40));
+        super(startX, startY + 80, grid, "#01EDFA");
+        this.pixelList.push(new Pixel(startX, startY + 40, this.color));
+        this.pixelList.push(new Pixel(startX, startY, this.color));
+        this.pixelList.push(new Pixel(startX, startY - 40, this.color));
     }
 }
