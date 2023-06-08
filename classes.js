@@ -76,10 +76,6 @@ class Block {
     }
 
     moveRight(){
-        // if (this.pixelList[0].xCoordinate >= canvas.width || this.pixelList[this.pixelList.length-1].yCoordinate <= 40) {
-        //     return;
-        // }
-
         for (let i = 0; i < this.pixelList.length; i++) {
             if (this.pixelList[i].xCoordinate + 40 >= canvas.width || this.pixelList[i].yCoordinate >= canvas.height){
                 return;
@@ -95,9 +91,6 @@ class Block {
     }
 
     moveLeft(){
-        // if (block.pixelList[0].xCoordinate >= canvas.width || block.pixelList[this.pixelList.length-1].yCoordinate <= 40) {
-        //     return;
-        // }
         for (let i = 0; i < this.pixelList.length; i++) {
             if (this.pixelList[i].xCoordinate - 40 < 0 ||this.pixelList[i].yCoordinate >= canvas.height){
                 return;
@@ -119,9 +112,6 @@ class Block {
     }
 
     quickDrop(){
-        // while (block.pixelList[0].yCoordinate + 40 < canvas.height) {
-        //     this.moveDown();
-        // }
         let distToBottom = canvas.height - this.pixelList[0].yCoordinate;
         
         for (let i = 0; i < this.pixelList.length; i++) {

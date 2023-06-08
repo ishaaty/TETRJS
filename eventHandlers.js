@@ -4,6 +4,7 @@ let clearBtn = document.querySelector("#clear");
 let color = "black";
 let gridList = [];
 
+// create the canvas
 for (let x = 0; x <= canvas.height; x += 40) {
     for (let y = 0; y <= canvas.width; y += 40) {
         let pixel = new Pixel(x, y);
@@ -30,7 +31,6 @@ window.addEventListener("keydown", function (e) {
     }
 });
 
-// doing this as a temp fix, need a better way of handling what blocks are active
 let block;
 window.addEventListener("load", function () {
     // creating the grid
@@ -39,7 +39,7 @@ window.addEventListener("load", function () {
     createBlock(pixelGrid);
     v = setInterval(function () {
         if (!(block.pixelList[0].yCoordinate + 40 <= canvas.height)) {
-            console.log("made")
+            // create the next block if current block hit bottom
             createBlock(pixelGrid);
         }
     }, 0);
@@ -48,6 +48,7 @@ window.addEventListener("load", function () {
 
 function createBlock(pixelGrid) {
     let v;
+    // randomly pick a block type
     let rand = Math.floor(Math.random() * 7);
     switch (rand) {
         case 0:
@@ -71,9 +72,9 @@ function createBlock(pixelGrid) {
         case 6:
             block = new Line(160, 40, pixelGrid);
     }
+    // make block fall
     v = setInterval(function () {
         block.moveDown();
-        // if (block.pixelList[block.pixelList.length -1].yCoordinate + 40 == canvas.height){
         for (let i = 0; i < block.pixelList.length; i++) {
             let pix;
             for (let j = 0; j < gridList.length; j++) {
@@ -84,6 +85,7 @@ function createBlock(pixelGrid) {
 
             }
 
+            // set space availibility
             if (block.pixelList[i].yCoordinate >= canvas.height || !(pix.isAvailable())) {
                 clearInterval(v);
                 for (let i = 0; i < block.pixelList.length; i++) {
