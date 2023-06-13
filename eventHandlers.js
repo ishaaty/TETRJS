@@ -9,6 +9,7 @@ for (let i = 0; i < canvas.width; i += 40){
     highestHeights.push(canvas.height);
 }
 
+// create the canvas
 for (let x = 0; x <= canvas.height; x += 40) {
     for (let y = 0; y <= canvas.width; y += 40) {
         let pixel = new Pixel(x, y);
@@ -30,12 +31,14 @@ window.addEventListener("keydown", function (e) {
     if (e.key == "ArrowRight") {
         block.moveRight();
     }
+    if (e.key == "ArrowUp") {
+        block.rotate(block);
+    }
     if (e.key == " ") {
         block.quickDrop();
     }
 });
 
-// doing this as a temp fix, need a better way of handling what blocks are active
 let block;
 window.addEventListener("load", function () {
     // creating the grid
@@ -44,7 +47,7 @@ window.addEventListener("load", function () {
     createBlock(pixelGrid);
     v = setInterval(function () {
         if (!(block.pixelList[0].yCoordinate + 40 <= canvas.height)) {
-            console.log("made")
+            // create the next block if current block hit bottom
             createBlock(pixelGrid);
         }
     }, 0);
@@ -53,6 +56,7 @@ window.addEventListener("load", function () {
 
 function createBlock(pixelGrid) {
     let v;
+    // randomly pick a block type
     let rand = Math.floor(Math.random() * 7);
     switch (rand) {
         case 0:
