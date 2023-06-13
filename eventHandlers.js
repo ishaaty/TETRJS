@@ -52,8 +52,9 @@ window.addEventListener("load", function () {
     pixelGrid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 40);
     createBlock(pixelGrid);
     v = setInterval(function () {
-        if (!(block.pixelList[0].yCoordinate + 40 <= canvas.height)) {
-            // create the next block if current block hit bottom
+        // if (!(block.pixelList[0].yCoordinate + 40 <= canvas.height)) {
+        if (yay){
+            yay = false;
             createBlock(pixelGrid);
         }
     }, 0);
@@ -86,7 +87,6 @@ function createBlock(pixelGrid) {
         case 6:
             block = new Line(160, 40, pixelGrid);
     }
-    block = new Square(160, 40, pixelGrid);
 
     v = setInterval(function () {
         block.moveDown();
@@ -100,6 +100,7 @@ function createBlock(pixelGrid) {
                     gridList[block.pixelList[j].yCoordinate/40][block.pixelList[j].xCoordinate/40].changeAvailability();
                     console.log(gridList[block.pixelList[j].yCoordinate/40][block.pixelList[j].xCoordinate/40].isAvailable)
                 }
+                yay = true;
                 clearInterval(v);
                 break;
             }
