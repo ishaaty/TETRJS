@@ -10,11 +10,11 @@ class Pixel {
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
         this.color = color || "white";
-        this.isAvailable = false;
+        this.isAvailable = true;
     }
 
     changeAvailability() {
-        this.isAvailable = !(this.isAvailable);
+        this.isAvailable = false;
     }
 
     changeColor(color){
@@ -31,7 +31,6 @@ class Pixel {
 
     makeOrColorGrid(xMin, yMin, xMax, yMax, inc) {
         // making vertical lines
-        let color = this.color;
         for (let xUpdate = xMin; xUpdate < xMax; xUpdate += inc){
             for (let yUpdate = yMin; yUpdate < yMax; yUpdate++){
                 this.fill(xUpdate, yUpdate);
