@@ -178,19 +178,12 @@ class Square extends Block {
 
 class LBlock extends Block {
     constructor (startX, startY, grid){
-<<<<<<< HEAD
-        super(startX, startY + 40, grid, "#FFC82E");
-        this.pixelList.push(new Pixel(startX, startY - 40, this.color));
-        this.pixelList.push(new Pixel(startX + 40, startY - 40, this.color));
-        this.pixelList.push(new Pixel(startX, startY, this.color));
-=======
         super(startX, startY, grid, "#FFC82E");
         this.pixelList.push(new Pixel(startX, startY + 40, this.color));
         this.pixelList.push(new Pixel(startX, startY - 40, this.color));
         this.pixelList.push(new Pixel(startX + 40, startY - 40, this.color));
 
         this.colored = "#FFC82E";
->>>>>>> 8d2ee9d62e5627a4ee052c186a271e72cc7e5d1c
     }
 }
 
