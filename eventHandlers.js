@@ -3,19 +3,25 @@ let currentColor = document.querySelector("#currentColor");
 let clearBtn = document.querySelector("#clear");
 let color = "black";
 let gridList = [];
-let highestHeights = [];
+let tempList = [];
+let yay = false;
 
-for (let i = 0; i < canvas.width; i += 40){
-    highestHeights.push(canvas.height);
-}
-
-// create the canvas
-for (let x = 0; x <= canvas.height; x += 40) {
-    for (let y = 0; y <= canvas.width; y += 40) {
+for (let y = 0; y <= canvas.height; y += 40) {
+    for (let x = 0; x <= canvas.width; x += 40) {
         let pixel = new Pixel(x, y);
-        gridList.push(pixel);
+        tempList.push(pixel);
     }
+    gridList.push(tempList);
+    tempList = [];
 }
+
+// // create the canvas
+// for (let x = 0; x <= canvas.height; x += 40) {
+//     for (let y = 0; y <= canvas.width; y += 40) {
+//         let pixel = new Pixel(x, y);
+//         gridList.push(pixel);
+//     }
+// }
 
 // movement based on input
 window.addEventListener("keydown", function (e) {
@@ -42,7 +48,7 @@ window.addEventListener("keydown", function (e) {
 let block;
 window.addEventListener("load", function () {
     // creating the grid
-    let pixelGrid = gridList[0]; // contains coordinates (0,0)
+    let pixelGrid = gridList[0][0]; // contains coordinates (0,0)
     pixelGrid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 40);
     createBlock(pixelGrid);
     v = setInterval(function () {
@@ -86,16 +92,19 @@ function createBlock(pixelGrid) {
         block.moveDown();
         
         for (let i = 0; i < block.pixelList.length; i++){
-            if (block.pixelList[i].yCoordinate >= highestHeights[block.pixelList[i].xCoordinate/40]){
-                clearInterval(v);
-                for (let i = 0; i < block.xCoordinateList.length; i++){
-                    highestHeights[i] -= 80;
+            if (block.pixelList[i].yCoordinate == 800 || gridList[block.pixelList[i].yCoordinate/40+1][block.pixelList[i].xCoordinate/40].isAvailable == false){
+                yay = true;
+                for (let j = 0; j < block.pixelList.length; j++){
+                    console.log(j);
+                    console.log(gridList[block.pixelList[j].yCoordinate/40][block.pixelList[j].xCoordinate/40].isAvailable);
+                    gridList[block.pixelList[j].yCoordinate/40][block.pixelList[j].xCoordinate/40].changeAvailability();
+                    console.log(gridList[block.pixelList[j].yCoordinate/40][block.pixelList[j].xCoordinate/40].isAvailable)
                 }
+                clearInterval(v);
                 break;
             }
         }
 
-        console.log(highestHeights);
 
     }, 1000);
     // createBlock(pixelGrid);

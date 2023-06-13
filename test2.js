@@ -4,6 +4,7 @@ let clearBtn = document.querySelector("#clear");
 let color = "black";
 let gridList = [];
 let tempList = [];
+let yay = false;
 
 for (let y = 0; y <= canvas.height; y += 40) {
     for (let x = 0; x <= canvas.width; x += 40) {
@@ -42,13 +43,12 @@ window.addEventListener("load", function () {
     let pixelGrid = gridList[0][0]; // contains coordinates (0,0)
     pixelGrid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 40);
     createBlock(pixelGrid);
-    v = setInterval(function () {
-        createBlock(pixelGrid);
-    }, 0);
+    // let v = setInterval(function () {
+    //     createBlock(pixelGrid);
+    // }, 1000);
 });
 
 function createBlock(pixelGrid) {
-    let v;
     // randomly pick a block type
     let rand = Math.floor(Math.random() * 7);
     switch (rand) {
@@ -78,16 +78,29 @@ function createBlock(pixelGrid) {
 }
     // make block fall
     function drop() {
+        block.moveDown();
         for (let i = 0; i < block.pixelList.length; i++){
             console.log("moving");
-            block.moveDown();
-            setTimeout(1000);
-            console.log(gridList.length);
-            console.log(block.pixelList[i].yCoordinate);
-            if (block.pixelList[i].yCoordinate == 800 || gridList[block.pixelList[i].yCoordinate/40+1][block.pixelList[i].xCoordinate/40].isAvailable == false){
-                for (let j = 0; j < block.pixelList.length; j++){
-                    gridList[block.pixelList[j].yCoordinate/40][block.pixelList[j].xCoordinate/40].changeAvailability();
+            setTimeout(() => {
+                console.log("here")
+                // console.log(gridList.length);
+                // console.log(block.pixelList[i].yCoordinate);
+                console.log(block.pixelList[i].yCoordinate/40+1)
+                console.log(block.pixelList[i].xCoordinate/40);
+                console.log(gridList[block.pixelList[i].yCoordinate/40+1][block.pixelList[i].xCoordinate/40]);
+                if (block.pixelList[i].yCoordinate == 800 || !(gridList[block.pixelList[i].yCoordinate/40+1][block.pixelList[i].xCoordinate/40].isAvailable)){
+                    console.log("heheheh")
+                    for (let j = 0; j < block.pixelList.length; j++){
+                        gridList[block.pixelList[j].yCoordinate/40][block.pixelList[j].xCoordinate/40].changeAvailability();
+                    }
+                    console.log(gridList);
+                    yay=true;
+                
                 }
+            }, 500);
+            console.log("again")
+            if (yay){
+                yay = false;
                 break;
             }
         }
