@@ -10,11 +10,11 @@ class Pixel {
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
         this.color = color || "white";
-        this.isAvailable = false;
+        this.isAvailable = true;
     }
 
     changeAvailability() {
-        this.isAvailable = !(this.isAvailable);
+        this.isAvailable = false;
     }
 
     changeColor(color){
@@ -31,7 +31,6 @@ class Pixel {
 
     makeOrColorGrid(xMin, yMin, xMax, yMax, inc) {
         // making vertical lines
-        let color = this.color;
         for (let xUpdate = xMin; xUpdate < xMax; xUpdate += inc){
             for (let yUpdate = yMin; yUpdate < yMax; yUpdate++){
                 this.fill(xUpdate, yUpdate);
@@ -179,12 +178,19 @@ class Square extends Block {
 
 class LBlock extends Block {
     constructor (startX, startY, grid){
+<<<<<<< HEAD
+        super(startX, startY + 40, grid, "#FFC82E");
+        this.pixelList.push(new Pixel(startX, startY - 40, this.color));
+        this.pixelList.push(new Pixel(startX + 40, startY - 40, this.color));
+        this.pixelList.push(new Pixel(startX, startY, this.color));
+=======
         super(startX, startY, grid, "#FFC82E");
         this.pixelList.push(new Pixel(startX, startY + 40, this.color));
         this.pixelList.push(new Pixel(startX, startY - 40, this.color));
         this.pixelList.push(new Pixel(startX + 40, startY - 40, this.color));
 
         this.colored = "#FFC82E";
+>>>>>>> 8d2ee9d62e5627a4ee052c186a271e72cc7e5d1c
     }
 }
 
