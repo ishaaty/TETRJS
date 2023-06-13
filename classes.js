@@ -114,28 +114,18 @@ class Block {
     }
 
     slowDrop(){
-        if (block.pixelList[0].yCoordinate + 40 < canvas.height) {
+        if (block.pixelList[0].yCoordinate + 40 < canvas.height && block.pixelList[1].yCoordinate + 40 < canvas.height && block.pixelList[2].yCoordinate + 40 < canvas.height && block.pixelList[3].yCoordinate + 40 < canvas.height) {
             this.moveDown();
         } 
     }
 
     quickDrop(){
-        let distToBottom = canvas.height - this.pixelList[0].yCoordinate;
-        
-        for (let i = 0; i < this.pixelList.length; i++) {
-            let newY = this.pixelList[i].yCoordinate + distToBottom - 40;
-
-            this.grid.changeColor("black");
-            this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate+1, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate + 38, this.pixelList[i].yCoordinate-1, 1);
-            
-            this.pixelList[i].yCoordinate = newY;
-
-            this.grid.changeColor("white");
-            this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate-1, this.pixelList[i].yCoordinate -1, this.pixelList[i].xCoordinate + 38, newY-1, 1);
-        }
+        while (block.pixelList[0].yCoordinate + 40 < canvas.height && block.pixelList[1].yCoordinate + 40 < canvas.height && block.pixelList[2].yCoordinate + 40 < canvas.height && block.pixelList[3].yCoordinate + 40 < canvas.height) {
+            this.moveDown();
+        } 
     }
 
-    rotate(block){
+    rotate(){
         let centerX = this.pixelList[0].xCoordinate;
         let centerY = this.pixelList[0].yCoordinate;
 

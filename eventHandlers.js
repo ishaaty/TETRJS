@@ -32,7 +32,7 @@ window.addEventListener("keydown", function (e) {
         block.moveRight();
     }
     if (e.key == "ArrowUp") {
-        block.rotate(block);
+        block.rotate();
     }
     if (e.key == " ") {
         block.quickDrop();
