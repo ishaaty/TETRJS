@@ -6,6 +6,7 @@ let gridList = [];
 let tempList = [];
 let yay = false;
 
+// create canvas
 for (let y = 0; y <= canvas.height; y += 40) {
     for (let x = 0; x <= canvas.width; x += 40) {
         let pixel = new Pixel(x, y);
@@ -15,22 +16,21 @@ for (let y = 0; y <= canvas.height; y += 40) {
     tempList = [];
 }
 
-
 // movement based on input
 window.addEventListener("keydown", function (e) {
-    if (e.key == "ArrowDown") {
+    if (e.key == "ArrowDown" || e.key == "s") {
         block.slowDrop();
     }
     if (e.repeat) {
         return;
     }
-    if (e.key == "ArrowLeft") {
+    if (e.key == "ArrowLeft" || e.key == "a") {
         block.moveLeft();
     }
-    if (e.key == "ArrowRight") {
+    if (e.key == "ArrowRight" || e.key == "d") {
         block.moveRight();
     }
-    if (e.key == "ArrowUp") {
+    if (e.key == "ArrowUp" || e.key == "w") {
         block.rotate();
     }
     if (e.key == " ") {
@@ -44,8 +44,8 @@ window.addEventListener("load", function () {
     let pixelGrid = gridList[0][0]; // contains coordinates (0,0)
     pixelGrid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 40);
     createBlock(pixelGrid);
+    // create next block
     v = setInterval(function () {
-        // if (!(block.pixelList[0].yCoordinate + 40 <= canvas.height)) {
         if (yay){
             yay = false;
             createBlock(pixelGrid);
@@ -81,6 +81,7 @@ function createBlock(pixelGrid) {
             block = new Line(160, 40, pixelGrid);
     }
 
+    // make block move down passively
     v = setInterval(function () {
         block.moveDown();
         
@@ -88,19 +89,13 @@ function createBlock(pixelGrid) {
             if (block.pixelList[i].yCoordinate == 800 || gridList[block.pixelList[i].yCoordinate/40+1][block.pixelList[i].xCoordinate/40].isAvailable == false){
                 yay = true;
                 for (let j = 0; j < block.pixelList.length; j++){
-                    console.log(j);
-                    console.log(gridList[block.pixelList[j].yCoordinate/40][block.pixelList[j].xCoordinate/40].isAvailable);
                     gridList[block.pixelList[j].yCoordinate/40][block.pixelList[j].xCoordinate/40].changeAvailability();
-                    console.log(gridList[block.pixelList[j].yCoordinate/40][block.pixelList[j].xCoordinate/40].isAvailable)
                 }
                 yay = true;
                 clearInterval(v);
                 break;
             }
         }
-
-
     }, 500);
-    // createBlock(pixelGrid);
 
 }

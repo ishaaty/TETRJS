@@ -89,13 +89,9 @@ class Block {
             if (this.pixelList[i].xCoordinate + 40 >= canvas.width || this.pixelList[i].yCoordinate >= canvas.height){
                 return;
             }
-        }
-
-        for (let i = 0; i < this.pixelList.length; i++) {
             this.pixelList[i].xCoordinate += 40;
             this.grid.changeColor("black");
             this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate-39, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate-1, this.pixelList[i].yCoordinate, 1);
-            
         } 
     }
 
@@ -104,27 +100,50 @@ class Block {
             if (this.pixelList[i].xCoordinate - 40 < 0 ||this.pixelList[i].yCoordinate >= canvas.height || gridList[block.pixelList[i].yCoordinate/40][block.pixelList[i].xCoordinate/40-1].isAvailable){
                 return;
             }
-        }
-
-        for (let i = 0; i < this.pixelList.length; i++) {
-            let newX = this.pixelList[i].xCoordinate - 40;
             this.grid.changeColor("black");
             this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate+1, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate+39, this.pixelList[i].yCoordinate, 1);
-            this.pixelList[i].xCoordinate = newX;
-        } 
-    
+            this.pixelList[i].xCoordinate -= 40;
+        }
     }
 
     slowDrop(){
-        if (block.pixelList[0].yCoordinate + 40 < canvas.height && block.pixelList[1].yCoordinate + 40 < canvas.height && block.pixelList[2].yCoordinate + 40 < canvas.height && block.pixelList[3].yCoordinate + 40 < canvas.height) {
-            this.moveDown();
-        } 
+        for (let i = 0; i < block.pixelList.length; i++) {
+            let nextY = block.pixelList[i].yCoordinate + 40;
+            if ((nextY == 800) || (gridList[nextY/40+1][block.pixelList[i].xCoordinate/40].isAvailable == false)) return;
+        }
+        this.moveDown();
+        
     }
 
     quickDrop(){
-        while (block.pixelList[0].yCoordinate + 40 < canvas.height && block.pixelList[1].yCoordinate + 40 < canvas.height && block.pixelList[2].yCoordinate + 40 < canvas.height && block.pixelList[3].yCoordinate + 40 < canvas.height) {
-            this.moveDown();
+        let dropping = true;
+        let timesDrop = 0;
+
+        let nextY, nextY1, nextY2, nextY3, nexts;
+        nextY = block.pixelList[0].yCoordinate;
+        nextY1 = block.pixelList[1].yCoordinate;
+        nextY2 = block.pixelList[2].yCoordinate;
+        nextY3 = block.pixelList[3].yCoordinate;
+
+        nexts = [nextY,nextY1,nextY2,nextY3];
+
+        while (dropping) {
+
+            for (let i = 0; i < nexts.length; i++) {
+                if ((nexts[i] == 800) || (gridList[nexts[i]/40+1][block.pixelList[i].xCoordinate/40].isAvailable == false)) {
+                    dropping = false;
+                }
+            }
+
+            timesDrop ++;
+
+            for (let i = 0; i < nexts.length; i++) {
+                nexts[i] += 40;
+            }
         } 
+        for (let i = 1; i < timesDrop-1; i++) {
+            this.moveDown();
+        }
     }
 
     rotate(){
