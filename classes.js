@@ -88,13 +88,9 @@ class Block {
             if (this.pixelList[i].xCoordinate + 40 >= canvas.width || this.pixelList[i].yCoordinate >= canvas.height){
                 return;
             }
-        }
-
-        for (let i = 0; i < this.pixelList.length; i++) {
             this.pixelList[i].xCoordinate += 40;
             this.grid.changeColor("black");
             this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate-39, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate-1, this.pixelList[i].yCoordinate, 1);
-            
         } 
     }
 
@@ -103,14 +99,10 @@ class Block {
             if (this.pixelList[i].xCoordinate - 40 < 0 ||this.pixelList[i].yCoordinate >= canvas.height){
                 return;
             }
-        }
-
-        for (let i = 0; i < this.pixelList.length; i++) {
-            let newX = this.pixelList[i].xCoordinate - 40;
             this.grid.changeColor("black");
             this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate+1, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate+39, this.pixelList[i].yCoordinate, 1);
-            this.pixelList[i].xCoordinate = newX;
-        } 
+            this.pixelList[i].xCoordinate -= 40;
+        }
     }
 
     slowDrop(){
