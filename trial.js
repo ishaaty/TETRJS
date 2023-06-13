@@ -46,6 +46,7 @@ window.addEventListener("load", function () {
         block.moveDown();
         
         for (let i = 0; i < block.pixelList.length; i++){
+            console.log(gridList.length);
             console.log(block.pixelList[i].yCoordinate);
             if (gridList[block.pixelList[i].yCoordinate/40+1][block.pixelList[i].xCoordinate/40].isAvailable == false || block.pixelList[i].yCoordinate == 800){
                 for (let j = 0; j < block.pixelList.length; j++){
