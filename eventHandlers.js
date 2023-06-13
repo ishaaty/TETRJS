@@ -78,6 +78,7 @@ function createBlock(pixelGrid) {
     // make block fall
     v = setInterval(function () {
         block.moveDown();
+        block.colorBlock();
         for (let i = 0; i < block.pixelList.length; i++) {
             let pix;
             for (let j = 0; j < gridList.length; j++) {
