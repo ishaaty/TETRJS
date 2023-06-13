@@ -3,13 +3,15 @@ let currentColor = document.querySelector("#currentColor");
 let clearBtn = document.querySelector("#clear");
 let color = "black";
 let gridList = [];
+let tempList = [];
 
-// create the canvas
-for (let x = 0; x <= canvas.height; x += 40) {
-    for (let y = 0; y <= canvas.width; y += 40) {
+for (let y = 0; y <= canvas.height; y += 40) {
+    for (let x = 0; x <= canvas.width; x += 40) {
         let pixel = new Pixel(x, y);
-        gridList.push(pixel);
+        tempList.push(pixel);
     }
+    gridList.push(tempList);
+    tempList = [];
 }
 
 // movement based on input
@@ -37,14 +39,11 @@ window.addEventListener("keydown", function (e) {
 let block;
 window.addEventListener("load", function () {
     // creating the grid
-    let pixelGrid = gridList[0]; // contains coordinates (0,0)
+    let pixelGrid = gridList[0][0]; // contains coordinates (0,0)
     pixelGrid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 40);
     createBlock(pixelGrid);
     v = setInterval(function () {
-        if (!(block.pixelList[0].yCoordinate + 40 <= canvas.height)) {
-            // create the next block if current block hit bottom
-            createBlock(pixelGrid);
-        }
+        createBlock(pixelGrid);
     }, 0);
 });
 
@@ -75,27 +74,21 @@ function createBlock(pixelGrid) {
             block = new Line(160, 40, pixelGrid);
     }
     drop();
-    for (let i = 0; i < block.pixelList.length; i++) {
-        console.log(block.pixelList[i].isAvailable);
-        block.pixelList[i].changeAvailability();
-        console.log(block.pixelList[i].isAvailable);
-    }
+    console.log("done");
 }
     // make block fall
     function drop() {
-        console.log('hit');
-        block.moveDown();
-        block.colorBlock();
-        for (let i = 0; i < block.pixelList.length; i++) {
+        for (let i = 0; i < block.pixelList.length; i++){
+            console.log("moving");
+            block.moveDown();
             setTimeout(1000);
-            let pix;
-            for (let j = 0; j < gridList.length; j++) {
-                if (gridList[j].xCoordinate == block.pixelList[i].xCoordinate && gridList[j].yCoordinate == block.pixelList[i].yCoordinate + 40) {
-                    pix = gridList[j];
-                    console.log("stopped");
-                    break;
+            console.log(gridList.length);
+            console.log(block.pixelList[i].yCoordinate);
+            if (block.pixelList[i].yCoordinate == 800 || gridList[block.pixelList[i].yCoordinate/40+1][block.pixelList[i].xCoordinate/40].isAvailable == false){
+                for (let j = 0; j < block.pixelList.length; j++){
+                    gridList[block.pixelList[j].yCoordinate/40][block.pixelList[j].xCoordinate/40].changeAvailability();
                 }
-    
+                break;
             }
         }
     }
