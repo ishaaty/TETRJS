@@ -5,8 +5,8 @@ let color = "black";
 let gridList = [];
 let tempList = [];
 
-for (let y = 0; y <= canvas.width; y += 40) {
-    for (let x = 0; x <= canvas.height; x += 40) {
+for (let y = 0; y <= canvas.height; y += 40) {
+    for (let x = 0; x <= canvas.width; x += 40) {
         let pixel = new Pixel(x, y);
         tempList.push(pixel);
     }
@@ -48,7 +48,7 @@ window.addEventListener("load", function () {
         for (let i = 0; i < block.pixelList.length; i++){
             console.log(gridList.length);
             console.log(block.pixelList[i].yCoordinate);
-            if (gridList[block.pixelList[i].yCoordinate/40+1][block.pixelList[i].xCoordinate/40].isAvailable == false || block.pixelList[i].yCoordinate == 800){
+            if (block.pixelList[i].yCoordinate == 800 || gridList[block.pixelList[i].yCoordinate/40+1][block.pixelList[i].xCoordinate/40].isAvailable == false){
                 for (let j = 0; j < block.pixelList.length; j++){
                     gridList[block.pixelList[j].yCoordinate/40][block.pixelList[j].xCoordinate/40].changeAvailability();
                 }
