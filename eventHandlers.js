@@ -18,19 +18,19 @@ for (let y = 0; y <= canvas.height; y += 40) {
 
 // movement based on input
 window.addEventListener("keydown", function (e) {
-    if (e.key == "ArrowDown") {
+    if (e.key == "ArrowDown" || e.key == "s") {
         block.slowDrop();
     }
     if (e.repeat) {
         return;
     }
-    if (e.key == "ArrowLeft") {
+    if (e.key == "ArrowLeft" || e.key == "a") {
         block.moveLeft();
     }
-    if (e.key == "ArrowRight") {
+    if (e.key == "ArrowRight" || e.key == "d") {
         block.moveRight();
     }
-    if (e.key == "ArrowUp") {
+    if (e.key == "ArrowUp" || e.key == "w") {
         block.rotate();
     }
     if (e.key == " ") {
