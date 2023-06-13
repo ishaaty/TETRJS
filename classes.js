@@ -84,6 +84,7 @@ class Block {
     }
 
     moveRight(){
+        
         for (let i = 0; i < this.pixelList.length; i++) {
             if (this.pixelList[i].xCoordinate + 40 >= canvas.width || this.pixelList[i].yCoordinate >= canvas.height){
                 return;
@@ -100,7 +101,7 @@ class Block {
 
     moveLeft(){
         for (let i = 0; i < this.pixelList.length; i++) {
-            if (this.pixelList[i].xCoordinate - 40 < 0 ||this.pixelList[i].yCoordinate >= canvas.height){
+            if (this.pixelList[i].xCoordinate - 40 < 0 ||this.pixelList[i].yCoordinate >= canvas.height || gridList[block.pixelList[i].yCoordinate/40][block.pixelList[i].xCoordinate/40-1].isAvailable){
                 return;
             }
         }
@@ -111,6 +112,7 @@ class Block {
             this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate+1, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate+39, this.pixelList[i].yCoordinate, 1);
             this.pixelList[i].xCoordinate = newX;
         } 
+    
     }
 
     slowDrop(){
@@ -231,3 +233,4 @@ class Line extends Block {
         this.colored = "#01EDFA";
     }
 }
+
