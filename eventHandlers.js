@@ -3,6 +3,11 @@ let currentColor = document.querySelector("#currentColor");
 let clearBtn = document.querySelector("#clear");
 let color = "black";
 let gridList = [];
+let highestHeights = [];
+
+for (let i = 0; i < canvas.width; i += 40){
+    highestHeights.push(canvas.height);
+}
 
 for (let x = 0; x <= canvas.height; x += 40) {
     for (let y = 0; y <= canvas.width; y += 40) {
@@ -71,28 +76,24 @@ function createBlock(pixelGrid) {
         case 6:
             block = new Line(160, 40, pixelGrid);
     }
+    block = new Square(160, 40, pixelGrid);
+
     v = setInterval(function () {
         block.moveDown();
-        // if (block.pixelList[block.pixelList.length -1].yCoordinate + 40 == canvas.height){
-        for (let i = 0; i < block.pixelList.length; i++) {
-            let pix;
-            for (let j = 0; j < gridList.length; j++) {
-                if (gridList[j].xCoordinate == block.pixelList[i].xCoordinate && gridList[j].yCoordinate == block.pixelList[i].yCoordinate + 40){
-                    pix = gridList[j];
-                    break;
-                }
-
-            }
-
-            if (block.pixelList[i].yCoordinate >= canvas.height || !(pix.isAvailable())) {
+        
+        for (let i = 0; i < block.pixelList.length; i++){
+            if (block.pixelList[i].yCoordinate >= highestHeights[block.pixelList[i].xCoordinate/40]){
                 clearInterval(v);
-                for (let i = 0; i < block.pixelList.length; i++) {
-                    console.log(block.pixelList[i].isAvailable);
-                    block.pixelList[i].changeAvailability();
-                    console.log(block.pixelList[i].isAvailable);
+                for (let i = 0; i < block.xCoordinateList.length; i++){
+                    highestHeights[i] -= 80;
                 }
+                break;
             }
         }
-    }, 1000);
-}
 
+        console.log(highestHeights);
+
+    }, 1000);
+    // createBlock(pixelGrid);
+
+}

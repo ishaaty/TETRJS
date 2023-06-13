@@ -10,11 +10,11 @@ class Pixel {
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
         this.color = color || "white";
-        this.isAvailable = false;
+        this.isAvailable = true;
     }
 
     changeAvailability() {
-        this.isAvailable = !(this.isAvailable);
+        this.isAvailable = false;
     }
 
     changeColor(color){
@@ -31,7 +31,6 @@ class Pixel {
 
     makeOrColorGrid(xMin, yMin, xMax, yMax, inc) {
         // making vertical lines
-        let color = this.color;
         for (let xUpdate = xMin; xUpdate < xMax; xUpdate += inc){
             for (let yUpdate = yMin; yUpdate < yMax; yUpdate++){
                 this.fill(xUpdate, yUpdate);
@@ -76,9 +75,6 @@ class Block {
     }
 
     moveRight(){
-        // if (this.pixelList[0].xCoordinate >= canvas.width || this.pixelList[this.pixelList.length-1].yCoordinate <= 40) {
-        //     return;
-        // }
 
         for (let i = 0; i < this.pixelList.length; i++) {
             if (this.pixelList[i].xCoordinate + 40 >= canvas.width || this.pixelList[i].yCoordinate >= canvas.height){
@@ -95,9 +91,6 @@ class Block {
     }
 
     moveLeft(){
-        // if (block.pixelList[0].xCoordinate >= canvas.width || block.pixelList[this.pixelList.length-1].yCoordinate <= 40) {
-        //     return;
-        // }
         for (let i = 0; i < this.pixelList.length; i++) {
             if (this.pixelList[i].xCoordinate - 40 < 0 ||this.pixelList[i].yCoordinate >= canvas.height){
                 return;
@@ -150,9 +143,9 @@ class Square extends Block {
 class LBlock extends Block {
     constructor (startX, startY, grid){
         super(startX, startY + 40, grid, "#FFC82E");
-        this.pixelList.push(new Pixel(startX, startY, this.color));
         this.pixelList.push(new Pixel(startX, startY - 40, this.color));
         this.pixelList.push(new Pixel(startX + 40, startY - 40, this.color));
+        this.pixelList.push(new Pixel(startX, startY, this.color));
     }
 }
 
