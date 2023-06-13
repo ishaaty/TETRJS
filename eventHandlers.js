@@ -15,13 +15,6 @@ for (let y = 0; y <= canvas.height; y += 40) {
     tempList = [];
 }
 
-// // create the canvas
-// for (let x = 0; x <= canvas.height; x += 40) {
-//     for (let y = 0; y <= canvas.width; y += 40) {
-//         let pixel = new Pixel(x, y);
-//         gridList.push(pixel);
-//     }
-// }
 
 // movement based on input
 window.addEventListener("keydown", function (e) {
