@@ -107,7 +107,7 @@ function createBlock(pixelGrid) {
         }
 
 
-    }, 1000);
+    }, 500);
     // createBlock(pixelGrid);
 
 }
