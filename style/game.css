@@ -2,7 +2,7 @@ body {
     width: 1800px;
     height: 800px;
     margin: auto auto;
-    background-color: rgb(27, 27, 147);
+    background-color: rgb(12, 12, 71);
 }
 
 canvas {
@@ -33,13 +33,23 @@ p, h2 {
 
 h2 {
     /*leaving space for next block, if doesn't happen, move up*/
-    margin-top: 400px;
+    margin-top: 350px;
     font-size: 1.4em;
 }
 
 p {
     font-size: 1.2em;
     margin-top: 10px;
+}
+
+#points {
+    margin-top: 5px;
+    padding: 5px;
+    font-size: 1.6em;
+    border-width: 2px;
+    border-style: solid;
+    border-color:white;
+    width: 320px;
 }
 
 .container {

@@ -1,10 +1,15 @@
 let ctx = canvas.getContext("2d");
 let currentColor = document.querySelector("#currentColor");
 let clearBtn = document.querySelector("#clear");
+let pointTag = document.querySelector("#points")
 let color = "black";
+
 let gridList = [];
 let tempList = [];
+
 let restart = false;
+let block;
+let score = 0;
 
 // create canvas
 for (let y = 0; y <= canvas.height; y += 40) {
@@ -38,7 +43,6 @@ window.addEventListener("keydown", function (e) {
     }
 });
 
-let block;
 window.addEventListener("load", function () {
     // creating the grid
     let pixelGrid = gridList[0][0]; // contains coordinates (0,0)
@@ -54,6 +58,8 @@ window.addEventListener("load", function () {
                 clearInterval();
             }
             else {
+                score += 40;
+                pointTag.innerHTML = "Score: " + score;
                 restart = false;
                 createBlock(pixelGrid);
             }

@@ -69,7 +69,7 @@ class Block {
 
     moveDown(){
         for (let i = 0; i < this.pixelList.length; i++) {
-            this.grid.changeColor("rgb(27, 27, 147)");
+            this.grid.changeColor("rgb(12, 12, 71)");
             this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate+1, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate + 39, this.pixelList[i].yCoordinate-1, 1);
         }
         for (let i = 0; i < this.pixelList.length; i++) {
@@ -93,7 +93,7 @@ class Block {
         } 
         for (let i = 0; i < this.pixelList.length; i++) {
             this.pixelList[i].xCoordinate += 40;
-            this.grid.changeColor("rgb(27, 27, 147)");
+            this.grid.changeColor("rgb(12, 12, 71)");
             this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate-39, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate-1, this.pixelList[i].yCoordinate, 1);
         }
     }
@@ -105,7 +105,7 @@ class Block {
             }
         }
         for (let i = 0; i < this.pixelList.length; i++) {
-            this.grid.changeColor("rgb(27, 27, 147)");
+            this.grid.changeColor("rgb(12, 12, 71)");
             this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate+1, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate+39, this.pixelList[i].yCoordinate, 1);
             this.pixelList[i].xCoordinate -= 40;
         }
@@ -155,7 +155,7 @@ class Block {
         let centerX = this.pixelList[0].xCoordinate;
         let centerY = this.pixelList[0].yCoordinate;
 
-        this.grid.changeColor("rgb(27, 27, 147)");
+        this.grid.changeColor("rgb(12, 12, 71)");
         this.grid.makeOrColorGrid(this.pixelList[0].xCoordinate+1, this.pixelList[0].yCoordinate-38, this.pixelList[0].xCoordinate + 38, this.pixelList[0].yCoordinate-1, 1);
 
         for (let i = 1; i < this.pixelList.length; i++) {
@@ -164,7 +164,7 @@ class Block {
             distToCenterX = this.pixelList[i].xCoordinate - centerX;
             distToCenterY = this.pixelList[i].yCoordinate - centerY;
 
-            this.grid.changeColor("rgb(27, 27, 147)");
+            this.grid.changeColor("rgb(12, 12, 71)");
             this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate+1, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate + 38, this.pixelList[i].yCoordinate-1, 1);
 
             this.pixelList[i].xCoordinate = centerX + (distToCenterY);
