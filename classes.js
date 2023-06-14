@@ -51,6 +51,7 @@ class Block {
     grid;
     pixelList;
     color;
+    height;
 
     constructor (startX, startY, grid, color){
         this.grid = grid;
@@ -184,6 +185,7 @@ class Square extends Block {
         this.pixelList.push(new Pixel(startX + 40, startY - 40, this.color));
         
         this.colored = "#FEFB34";
+        this.height = 40;
     }
 }
 
@@ -195,6 +197,7 @@ class LBlock extends Block {
         this.pixelList.push(new Pixel(startX + 40, startY - 40, this.color));
 
         this.colored = "#FFC82E";
+        this.height = 80;
     }
 }
 
@@ -206,6 +209,7 @@ class JBlock extends Block {
         this.pixelList.push(new Pixel(startX - 40, startY - 40, this.color));
 
         this.colored = "#0341AE";
+        this.height = 80;
     }
 }
 
@@ -217,6 +221,7 @@ class TBlock extends Block {
         this.pixelList.push(new Pixel(startX + 40, startY, this.color));
 
         this.colored = "#DD0AB2";
+        this.height = 40;
     }
 }
 
@@ -228,6 +233,7 @@ class SBlock extends Block {
         this.pixelList.push(new Pixel(startX + 40, startY - 40, this.color));
 
         this.colored = "#53DA3F";
+        this.height = 40;
     }
 }
 
@@ -239,6 +245,7 @@ class ZBlock extends Block {
         this.pixelList.push(new Pixel(startX - 40, startY - 40, this.color));
 
         this.colored = "#FD3F59";
+        this.height = 40;
     }
 }
 
@@ -250,6 +257,7 @@ class Line extends Block {
         this.pixelList.push(new Pixel(startX, startY - 40, this.color));
 
         this.colored = "#01EDFA";
+        this.height = 120;
     }
 }
 

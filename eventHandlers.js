@@ -4,7 +4,7 @@ let clearBtn = document.querySelector("#clear");
 let color = "black";
 let gridList = [];
 let tempList = [];
-let yay = false;
+let restart = false;
 
 // create canvas
 for (let y = 0; y <= canvas.height; y += 40) {
@@ -46,9 +46,17 @@ window.addEventListener("load", function () {
     createBlock(pixelGrid);
     // create next block
     v = setInterval(function () {
-        if (yay){
-            yay = false;
-            createBlock(pixelGrid);
+        if (restart){
+            console.log(block.pixelList[block.pixelList.length - 1])
+            if (block.pixelList[0].yCoordinate - block.height <= 0) {
+                ctx.font = "50px Arial";
+                ctx.fillText("GAME OVER", 45, 300);
+                clearInterval();
+            }
+            else {
+                restart = false;
+                createBlock(pixelGrid);
+            }
         }
     }, 0);
 });
@@ -87,15 +95,15 @@ function createBlock(pixelGrid) {
         
         for (let i = 0; i < block.pixelList.length; i++){
             if (block.pixelList[i].yCoordinate == 800 || gridList[block.pixelList[i].yCoordinate/40+1][block.pixelList[i].xCoordinate/40].isAvailable == false){
-                yay = true;
+                restart = true;
                 for (let j = 0; j < block.pixelList.length; j++){
                     gridList[block.pixelList[j].yCoordinate/40][block.pixelList[j].xCoordinate/40].changeAvailability();
                 }
-                yay = true;
+                restart = true;
                 clearInterval(v);
                 break;
             }
         }
-    }, 500);
+    }, 250);
 
 }

@@ -10,7 +10,7 @@ canvas {
     padding-left: 0;
     padding-right: 0;
     margin-top: 100px;
-    margin-left: 800px;
+    margin-left: 850px;
     margin-right: auto;
     display: block;
     padding: 0;
@@ -33,7 +33,7 @@ p, h2 {
 
 h2 {
     /*leaving space for next block, if doesn't happen, move up*/
-    margin-top: 500px;
+    margin-top: 400px;
     font-size: 1.4em;
 }
 
@@ -44,7 +44,7 @@ p {
 
 .container {
     display : grid;
-    grid-template-columns: 700px 200px;
+    grid-template-columns: 600px 200px;
 }
 
 img {
