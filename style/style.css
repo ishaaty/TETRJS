@@ -56,3 +56,12 @@ img {
     border: 14px solid;
     border-color: rgb(18, 18, 117);
 }
+
+.pickPalette {
+    color: white;
+}
+
+p {
+    margin-top: 50px;
+    color: white;
+}

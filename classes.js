@@ -174,8 +174,8 @@ class Block {
 }
 
 class Square extends Block {
-    constructor (startX, startY, grid){
-        super(startX, startY, grid, "#FEFB34");
+    constructor (startX, startY, grid, color){
+        super(startX, startY, grid, color);
         this.pixelList.push(new Pixel(startX + 40, startY, this.color));
         this.pixelList.push(new Pixel(startX, startY - 40, this.color));
         this.pixelList.push(new Pixel(startX + 40, startY - 40, this.color));
@@ -186,8 +186,8 @@ class Square extends Block {
 }
 
 class LBlock extends Block {
-    constructor (startX, startY, grid){
-        super(startX, startY, grid, "#FFC82E");
+    constructor (startX, startY, grid, color){
+        super(startX, startY, grid, color);
         this.pixelList.push(new Pixel(startX, startY + 40, this.color));
         this.pixelList.push(new Pixel(startX, startY - 40, this.color));
         this.pixelList.push(new Pixel(startX + 40, startY - 40, this.color));
@@ -198,8 +198,8 @@ class LBlock extends Block {
 }
 
 class JBlock extends Block {
-    constructor (startX, startY, grid){
-        super(startX, startY, grid, "#0341AE");
+    constructor (startX, startY, grid, color){
+        super(startX, startY, grid, color);
         this.pixelList.push(new Pixel(startX, startY + 40, this.color));
         this.pixelList.push(new Pixel(startX, startY - 40, this.color));
         this.pixelList.push(new Pixel(startX - 40, startY - 40, this.color));
@@ -210,8 +210,8 @@ class JBlock extends Block {
 }
 
 class TBlock extends Block {
-    constructor (startX, startY, grid){
-        super(startX, startY, grid, "#DD0AB2");
+    constructor (startX, startY, grid, color){
+        super(startX, startY, grid, color);
         this.pixelList.push(new Pixel(startX, startY - 40, this.color));
         this.pixelList.push(new Pixel(startX - 40, startY, this.color));
         this.pixelList.push(new Pixel(startX + 40, startY, this.color));
@@ -222,8 +222,8 @@ class TBlock extends Block {
 }
 
 class SBlock extends Block {
-    constructor (startX, startY, grid){
-        super(startX, startY, grid, "#53DA3F");
+    constructor (startX, startY, grid, color){
+        super(startX, startY, grid, color);
         this.pixelList.push(new Pixel(startX - 40, startY, this.color));
         this.pixelList.push(new Pixel(startX, startY - 40, this.color));
         this.pixelList.push(new Pixel(startX + 40, startY - 40, this.color));
@@ -234,8 +234,8 @@ class SBlock extends Block {
 }
 
 class ZBlock extends Block {
-    constructor (startX, startY, grid){
-        super(startX, startY, grid, "#FD3F59");
+    constructor (startX, startY, grid, color){
+        super(startX, startY, grid, color);
         this.pixelList.push(new Pixel(startX + 40, startY, this.color));
         this.pixelList.push(new Pixel(startX, startY - 40, this.color));
         this.pixelList.push(new Pixel(startX - 40, startY - 40, this.color));
@@ -246,8 +246,8 @@ class ZBlock extends Block {
 }
 
 class Line extends Block {
-    constructor (startX, startY, grid){
-        super(startX, startY + 40, grid, "#01EDFA");
+    constructor (startX, startY, grid, color){
+        super(startX, startY + 40, grid, color);
         this.pixelList.push(new Pixel(startX, startY + 80, this.color));
         this.pixelList.push(new Pixel(startX, startY, this.color));
         this.pixelList.push(new Pixel(startX, startY - 40, this.color));

@@ -2,6 +2,8 @@ let ctx = canvas.getContext("2d");
 let currentColor = document.querySelector("#currentColor");
 let clearBtn = document.querySelector("#clear");
 let pointTag = document.querySelector("#points")
+let paletteIn = sessionStorage.getItem("first");
+let palette;
 let color = "black";
 
 let gridList = [];
@@ -10,6 +12,18 @@ let tempList = [];
 let restart = false;
 let block;
 let score = 0;
+
+// order: square, Lblock, Jblock, Tblock, Sblock, Zblock, line
+if (paletteIn == "pastel") {
+    palette = ["#faf873", "#ffda70", "#92b9fc", "#ffa6ed", "#95ff85", "#ff8293", "#8cfaff"];
+} else if (paletteIn == "pink") {
+    palette = ["#ffecee", "#ffe0e6", "#ffd4de", "#ffc9d6", "#febdce", "#feb1c6", "#fea5be"];
+} else if (paletteIn == "blue") {
+    palette = ["#dbedff", "#b6daff", "#a4d1ff", "#91c7ff", "#7fbeff", "#6cb4ff", "#47a0ff"];
+} else {
+    palette = ["#FEFB34", "#FFC82E", "#0341AE", "#DD0AB2", "#53DA3F", "#FD3F59", "#01EDFA"];
+}
+
 
 // create canvas
 for (let y = 0; y <= canvas.height; y += 40) {
@@ -44,13 +58,14 @@ window.addEventListener("keydown", function (e) {
 });
 
 window.addEventListener("load", function () {
+    console.log(palette)
     // creating the grid
     let pixelGrid = gridList[0][0]; // contains coordinates (0,0)
     pixelGrid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 40);
     createBlock(pixelGrid);
     // create next block
     v = setInterval(function () {
-        if (restart){
+        if (restart) {
             console.log(block.pixelList[block.pixelList.length - 1])
             if (block.pixelList[0].yCoordinate - block.height <= 0) {
                 ctx.font = "50px Arial";
@@ -72,27 +87,28 @@ function createBlock(pixelGrid) {
     let v;
     // randomly pick a block type
     let rand = Math.floor(Math.random() * 7);
+    console.log(palette[0]);
     switch (rand) {
         case 0:
-            block = new Square(160, 40, pixelGrid);
+            block = new Square(160, 40, pixelGrid, palette[0]);
             break;
         case 1:
-            block = new LBlock(160, 40, pixelGrid);
+            block = new LBlock(160, 40, pixelGrid, palette[1]);
             break;
         case 2:
-            block = new JBlock(160, 40, pixelGrid);
+            block = new JBlock(160, 40, pixelGrid, palette[2]);
             break;
         case 3:
-            block = new TBlock(160, 40, pixelGrid);
+            block = new TBlock(160, 40, pixelGrid, palette[3]);
             break;
         case 4:
-            block = new ZBlock(160, 40, pixelGrid);
+            block = new ZBlock(160, 40, pixelGrid, palette[4]);
             break;
         case 5:
-            block = new SBlock(160, 40, pixelGrid);
+            block = new SBlock(160, 40, pixelGrid, palette[5]);
             break;
         case 6:
-            block = new Line(160, 40, pixelGrid);
+            block = new Line(160, 40, pixelGrid, palette[6]);
     }
 
     // make block move down passively
