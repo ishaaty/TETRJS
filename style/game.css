@@ -2,7 +2,7 @@ body {
     width: 1800px;
     height: 800px;
     margin: auto auto;
-    background-color: black;
+    background-color: rgb(27, 27, 147);
 }
 
 canvas {

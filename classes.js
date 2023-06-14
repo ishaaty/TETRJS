@@ -69,7 +69,7 @@ class Block {
 
     moveDown(){
         for (let i = 0; i < this.pixelList.length; i++) {
-            this.grid.changeColor("black");
+            this.grid.changeColor("rgb(27, 27, 147)");
             this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate+1, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate + 39, this.pixelList[i].yCoordinate-1, 1);
         }
         for (let i = 0; i < this.pixelList.length; i++) {
@@ -91,7 +91,7 @@ class Block {
                 return;
             }
             this.pixelList[i].xCoordinate += 40;
-            this.grid.changeColor("black");
+            this.grid.changeColor("rgb(27, 27, 147)");
             this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate-39, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate-1, this.pixelList[i].yCoordinate, 1);
         } 
     }
@@ -101,7 +101,7 @@ class Block {
             if (this.pixelList[i].xCoordinate - 40 < 0 ||this.pixelList[i].yCoordinate >= canvas.height){
                 return;
             }
-            this.grid.changeColor("black");
+            this.grid.changeColor("rgb(27, 27, 147)");
             this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate+1, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate+39, this.pixelList[i].yCoordinate, 1);
             this.pixelList[i].xCoordinate -= 40;
         }

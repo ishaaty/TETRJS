@@ -1,21 +1,26 @@
 html {
     justify-content: center;
     text-align: center;
-    background-color: black;
+    background: url(../imgs/bg.jpg);
+    background-size: auto 121%;
+    height: 100%;
 }
 
 body {
-    width: 1800px;
+    width: 1600px;
     height: 900px;
+    min-height: 100%;
     margin: auto auto;
-    background-color: rgb(32, 32, 173);
+    background-color: rgb(27, 27, 147);
     font-family: 'Notable';
     font-style: italic;
     letter-spacing: 1.5px;
+    border: 18px solid;
+    border-color: rgb(18, 18, 117);
 }
 
 h1 {
-    margin-top: 0px;
+    margin-top: 100px;
     padding-top: 40px;
     color: white;
     font-size: 50px;
