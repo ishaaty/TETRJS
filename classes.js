@@ -84,6 +84,13 @@ class Block {
         }
     }
 
+    // reColorBlock(){
+    //     this.grid.changeColor(this.pixelList[i].color);
+    //     this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate + 1, this.pixelList[i].yCoordinate, this.pixelList[i].xCoordinate + 39, newY, 1);
+    //     this.grid.changeColor("white");
+    //     this.grid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 40);
+    // }
+
     moveRight(){
         
         for (let i = 0; i < this.pixelList.length; i++) {

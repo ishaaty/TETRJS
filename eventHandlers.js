@@ -131,10 +131,35 @@ function createBlock(pixelGrid) {
                     gridList[block.pixelList[j].yCoordinate/40][block.pixelList[j].xCoordinate/40].changeAvailability();
                 }
                 restart = true;
+                // clearRow();
                 clearInterval(v);
                 break;
             }
         }
-    }, 250);
+    }, 150);
+
+}
+
+function clearRow(){
+    let check = false;
+    for (let i = gridList.length-1; i >= 0; i--){
+        for (let j = 0; j < gridList[0].length; j++){
+            if (gridList[i][j].isAvailable){
+                check = true;
+                break;
+            }
+        }
+        if (check){
+            for (let k = i; k > 0; k--){
+                for (let j = 0; j < gridList[0].length; j++){
+                    let pix = gridList[k][j];
+                    pix.yCoordinate += 40;
+                    gridList[k+1][j] = pix;
+                    pixelGrid.changeColor(pix.color);
+                    pixelGrid.makeOrColorGrid(pix.xCoordinate + 1, pix.yCoordinate, pix.xCoordinate + 39, pix.yCoordinate+39, 1);
+                }
+            }
+        }
+    }
 
 }
