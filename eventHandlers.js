@@ -80,8 +80,9 @@ window.addEventListener("load", function () {
         if (restart) {
             console.log(block.pixelList[block.pixelList.length - 1])
             if (block.pixelList[0].yCoordinate - block.height <= 0) {
-                ctx.font = "50px Arial";
-                ctx.fillText("GAME OVER", 45, 300);
+                ctx.font = "50px Fantasy";
+                ctx.fillStyle = "white";
+                ctx.fillText("GAME OVER", 90, 300);
                 clearInterval();
             }
             else {

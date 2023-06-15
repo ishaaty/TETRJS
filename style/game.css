@@ -6,7 +6,8 @@ body {
 }
 
 canvas {
-    border: 3px solid rgb(36, 36, 189);
+    /* border: 5px solid rgb(254, 7, 7); */
+    border: 5px solid white;
     padding-left: 0;
     padding-right: 0;
     margin-top: 100px;
@@ -36,9 +37,9 @@ p, h2 {
 h2 {
     /*leaving space for next block, if doesn't happen, move up*/
     margin-top: 350px;
-    font-size: 1.4em;
-    color: rgb(84, 84, 249);
-    font-weight: bolder;
+    font-size: 1.8em;
+    color: rgb(82, 82, 228);
+    letter-spacing: 1.6px;
 }
 
 p {
@@ -53,7 +54,8 @@ p {
     font-size: 1.6em;
     border-width: 3px;
     border-style: solid;
-    border-color:rgb(36, 36, 189);
+    /* border-color:rgb(53, 53, 226); */
+    border-color: white;
     width: 320px;
 }
 
