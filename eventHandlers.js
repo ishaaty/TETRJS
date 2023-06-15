@@ -20,6 +20,8 @@ if (paletteIn == "pastel") {
     palette = ["#ffecee", "#ffe0e6", "#ffd4de", "#ffc9d6", "#febdce", "#feb1c6", "#fea5be"];
 } else if (paletteIn == "blue") {
     palette = ["#dbedff", "#b6daff", "#a4d1ff", "#91c7ff", "#7fbeff", "#6cb4ff", "#47a0ff"];
+} else if (paletteIn == "gray") {
+    palette = ["#ffffff", "#d5d5d5", "#aaaaaa", "#808080", "#555555", "#2b2b2b", "#000000"];
 } else {
     palette = ["#FEFB34", "#FFC82E", "#0341AE", "#DD0AB2", "#53DA3F", "#FD3F59", "#01EDFA"];
 }
@@ -37,15 +39,15 @@ for (let y = 0; y <= canvas.height; y += 40) {
 
 // movement based on input
 window.addEventListener("keydown", function (e) {
-    if (e.key == "ArrowDown" || e.key == "s") {
-        block.slowDrop();
-    }
     if (e.repeat) {
         return;
     }
+    if (e.key == "ArrowDown" || e.key == "s") {
+        block.slowDrop();
+    }
     if (e.key == "ArrowLeft" || e.key == "a") {
         for (let i = 0; i < block.pixelList.length; i++){
-            if (block.pixelList[i].yCoordinate == 800 || gridList[block.pixelList[i].yCoordinate/40][block.pixelList[i].xCoordinate/40-1].isAvailable == false){
+            if (block.pixelList[i].xCoordinate - 40 < 0 || gridList[block.pixelList[i].yCoordinate/40][block.pixelList[i].xCoordinate/40-1].isAvailable == false){
                 return;
             }
         }
@@ -53,7 +55,7 @@ window.addEventListener("keydown", function (e) {
     }
     if (e.key == "ArrowRight" || e.key == "d") {
         for (let i = 0; i < block.pixelList.length; i++){
-            if (block.pixelList[i].yCoordinate == 800 || gridList[block.pixelList[i].yCoordinate/40][block.pixelList[i].xCoordinate/40+1].isAvailable == false){
+            if (block.pixelList[i].xCoordinate + 40 >= 400 || block.pixelList[i].yCoordinate >= canvas.height || gridList[block.pixelList[i].yCoordinate/40][block.pixelList[i].xCoordinate/40+1].isAvailable == false){
                 return;
             }
         }
@@ -63,7 +65,7 @@ window.addEventListener("keydown", function (e) {
         block.rotate();
     }
     if (e.key == " ") {
-        block.quickDrop();
+        score += block.quickDrop();
     }
 });
 
