@@ -47,7 +47,7 @@ window.addEventListener("keydown", function (e) {
     }
     if (e.key == "ArrowLeft" || e.key == "a") {
         for (let i = 0; i < block.pixelList.length; i++){
-            if (block.pixelList[i].yCoordinate == 800 || gridList[block.pixelList[i].yCoordinate/40][block.pixelList[i].xCoordinate/40-1].isAvailable == false){
+            if (block.pixelList[i].xCoordinate - 40 < 0 || gridList[block.pixelList[i].yCoordinate/40][block.pixelList[i].xCoordinate/40-1].isAvailable == false){
                 return;
             }
         }
@@ -55,7 +55,7 @@ window.addEventListener("keydown", function (e) {
     }
     if (e.key == "ArrowRight" || e.key == "d") {
         for (let i = 0; i < block.pixelList.length; i++){
-            if (block.pixelList[i].yCoordinate == 800 || gridList[block.pixelList[i].yCoordinate/40][block.pixelList[i].xCoordinate/40+1].isAvailable == false){
+            if (block.pixelList[i].xCoordinate + 40 >= 400 || block.pixelList[i].yCoordinate >= canvas.height || gridList[block.pixelList[i].yCoordinate/40][block.pixelList[i].xCoordinate/40+1].isAvailable == false){
                 return;
             }
         }

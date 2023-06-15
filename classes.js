@@ -84,28 +84,17 @@ class Block {
         }
     }
 
-    moveRight(){
-        
-        for (let i = 0; i < this.pixelList.length; i++) {
-            if (this.pixelList[i].xCoordinate + 40 >= 400 || this.pixelList[i].yCoordinate >= canvas.height){
-                return;
-            }
-        } 
+    moveRight(){ 
+        this.grid.changeColor("rgb(12, 12, 71)");
         for (let i = 0; i < this.pixelList.length; i++) {
             this.pixelList[i].xCoordinate += 40;
-            this.grid.changeColor("rgb(12, 12, 71)");
             this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate-39, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate-1, this.pixelList[i].yCoordinate, 1);
         }
     }
 
     moveLeft(){
+        this.grid.changeColor("rgb(12, 12, 71)");
         for (let i = 0; i < this.pixelList.length; i++) {
-            if (this.pixelList[i].xCoordinate - 40 < 0 || this.pixelList[i].yCoordinate >= canvas.height){
-                return;
-            }
-        }
-        for (let i = 0; i < this.pixelList.length; i++) {
-            this.grid.changeColor("rgb(12, 12, 71)");
             this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate+1, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate+39, this.pixelList[i].yCoordinate, 1);
             this.pixelList[i].xCoordinate -= 40;
         }
