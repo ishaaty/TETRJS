@@ -44,9 +44,19 @@ window.addEventListener("keydown", function (e) {
         return;
     }
     if (e.key == "ArrowLeft" || e.key == "a") {
+        for (let i = 0; i < block.pixelList.length; i++){
+            if (block.pixelList[i].yCoordinate == 800 || gridList[block.pixelList[i].yCoordinate/40][block.pixelList[i].xCoordinate/40-1].isAvailable == false){
+                return;
+            }
+        }
         block.moveLeft();
     }
     if (e.key == "ArrowRight" || e.key == "d") {
+        for (let i = 0; i < block.pixelList.length; i++){
+            if (block.pixelList[i].yCoordinate == 800 || gridList[block.pixelList[i].yCoordinate/40][block.pixelList[i].xCoordinate/40+1].isAvailable == false){
+                return;
+            }
+        }
         block.moveRight();
     }
     if (e.key == "ArrowUp" || e.key == "w") {
@@ -117,7 +127,6 @@ function createBlock(pixelGrid) {
         
         for (let i = 0; i < block.pixelList.length; i++){
             if (block.pixelList[i].yCoordinate == 800 || gridList[block.pixelList[i].yCoordinate/40+1][block.pixelList[i].xCoordinate/40].isAvailable == false){
-                restart = true;
                 for (let j = 0; j < block.pixelList.length; j++){
                     gridList[block.pixelList[j].yCoordinate/40][block.pixelList[j].xCoordinate/40].changeAvailability();
                 }
