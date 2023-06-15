@@ -6,7 +6,7 @@ body {
 }
 
 canvas {
-    border: 3px solid white;
+    border: 3px solid rgb(36, 36, 189);
     padding-left: 0;
     padding-right: 0;
     margin-top: 100px;
@@ -29,26 +29,31 @@ p, h2 {
     grid-column: 1;
     margin-left: 300px;
     margin-bottom: 0px;
+    font-family: fantasy;
+    letter-spacing: 0.5px;
 }
 
 h2 {
     /*leaving space for next block, if doesn't happen, move up*/
     margin-top: 350px;
     font-size: 1.4em;
+    color: rgb(84, 84, 249);
+    font-weight: bolder;
 }
 
 p {
     font-size: 1.2em;
     margin-top: 10px;
+    font-weight: lighter;
 }
 
 #points {
     margin-top: 5px;
     padding: 5px;
     font-size: 1.6em;
-    border-width: 2px;
+    border-width: 3px;
     border-style: solid;
-    border-color:white;
+    border-color:rgb(36, 36, 189);
     width: 320px;
 }
 
