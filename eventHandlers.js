@@ -21,7 +21,7 @@ if (paletteIn == "pastel") {
 } else if (paletteIn == "blue") {
     palette = ["#dbedff", "#b6daff", "#a4d1ff", "#91c7ff", "#7fbeff", "#6cb4ff", "#47a0ff"];
 } else if (paletteIn == "gray") {
-    palette = ["#ffffff", "#d5d5d5", "#aaaaaa", "#808080", "#555555", "#2b2b2b", "#000000"];
+    palette = ["#ffffff", "#d5d5d5", "#aaaaaa", "#808080", "#555555", "#2b2b2b", "#1a1a1a"];
 } else {
     palette = ["#FEFB34", "#FFC82E", "#0341AE", "#DD0AB2", "#53DA3F", "#FD3F59", "#01EDFA"];
 }
