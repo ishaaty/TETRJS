@@ -43,8 +43,7 @@ window.addEventListener("keydown", function (e) {
         return;
     }
     if (e.key == "ArrowDown" || e.key == "s") {
-        block.slowDrop();
-        score += 5;
+        score += block.slowDrop();
     }
     if (e.key == "ArrowLeft" || e.key == "a") {
         for (let i = 0; i < block.pixelList.length; i++){

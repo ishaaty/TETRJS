@@ -103,10 +103,11 @@ class Block {
     slowDrop(){
         for (let i = 0; i < block.pixelList.length; i++) {
             let nextY = block.pixelList[i].yCoordinate + 40;
-            if ((nextY == 800) || (gridList[nextY/40+1][block.pixelList[i].xCoordinate/40].isAvailable == false)) return;
+            if ((nextY == 800) || (gridList[nextY/40+1][block.pixelList[i].xCoordinate/40].isAvailable == false)) return 0;
         }
         this.moveDown();
         
+        return 5;
     }
 
     quickDrop(){
