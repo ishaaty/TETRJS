@@ -4,6 +4,7 @@ let pastel = document.getElementById('pastel');
 let pink = document.getElementById('pink');
 let blue = document.getElementById('blue');
 let gray = document.getElementById('gray');
+let vri = document.getElementById('vri');
 
 btn.addEventListener("click", function () {
     if (pastel.checked) {
@@ -14,6 +15,8 @@ btn.addEventListener("click", function () {
         addToStorage("blue");
     } else if (gray.checked) {
         addToStorage("gray");
+    } else if (vri.checked) {
+        addToStorage("vri");
     } else {
         addToStorage("classic");
     }
