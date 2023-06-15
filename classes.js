@@ -145,10 +145,23 @@ class Block {
             for (let i = 0; i < nexts.length; i++) {
                 nexts[i] += 40;
             }
-        } 
-        for (let i = 1; i < timesDrop-1; i++) {
-            this.moveDown();
         }
+
+        for (let i = 0; i < this.pixelList.length; i++) {
+            this.grid.changeColor("rgb(12, 12, 71)");
+            this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate+1, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate + 39, this.pixelList[i].yCoordinate-1, 1);
+        }
+        for (let i = 0; i < this.pixelList.length; i++) {
+            let newY = this.pixelList[i].yCoordinate + (timesDrop*40) - 80;
+    
+            this.grid.changeColor("white");
+            this.grid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 40);
+    
+            this.pixelList[i].yCoordinate = newY;
+        } 
+
+        // score stuff
+        return timesDrop*5;
     }
 
     rotate(){

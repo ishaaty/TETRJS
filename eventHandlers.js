@@ -65,7 +65,7 @@ window.addEventListener("keydown", function (e) {
         block.rotate();
     }
     if (e.key == " ") {
-        block.quickDrop();
+        score += block.quickDrop();
     }
 });
 
