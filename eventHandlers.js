@@ -44,6 +44,7 @@ window.addEventListener("keydown", function (e) {
     }
     if (e.key == "ArrowDown" || e.key == "s") {
         block.slowDrop();
+        score += 5;
     }
     if (e.key == "ArrowLeft" || e.key == "a") {
         for (let i = 0; i < block.pixelList.length; i++){
@@ -85,7 +86,7 @@ window.addEventListener("load", function () {
                 clearInterval();
             }
             else {
-                score += 40;
+                // score += 40;
                 pointTag.innerHTML = "Score: " + score;
                 restart = false;
                 createBlock(pixelGrid);

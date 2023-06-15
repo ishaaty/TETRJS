@@ -157,20 +157,31 @@ class Block {
         let centerX = this.pixelList[0].xCoordinate;
         let centerY = this.pixelList[0].yCoordinate;
 
-        this.grid.changeColor("rgb(12, 12, 71)");
-        this.grid.makeOrColorGrid(this.pixelList[0].xCoordinate+1, this.pixelList[0].yCoordinate-38, this.pixelList[0].xCoordinate + 38, this.pixelList[0].yCoordinate-1, 1);
+        let farRight = 120;
+        let farLeft = 120;
 
-        for (let i = 1; i < this.pixelList.length; i++) {
-            let distToCenterX, distToCenterY;
+        for (let i = 0; i < this.pixelList.length; i++) {
+            if (this.pixelList[i].xCoordinate > farRight) farRight = this.pixelList[i].xCoordinate;
+            if (this.pixelList[i].xCoordinate < farLeft) farLeft = this.pixelList[i].xCoordinate;
+        }
 
-            distToCenterX = this.pixelList[i].xCoordinate - centerX;
-            distToCenterY = this.pixelList[i].yCoordinate - centerY;
+        if (block.canRotate(farRight,farLeft)) {
 
             this.grid.changeColor("rgb(12, 12, 71)");
-            this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate+1, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate + 38, this.pixelList[i].yCoordinate-1, 1);
+            this.grid.makeOrColorGrid(this.pixelList[0].xCoordinate+1, this.pixelList[0].yCoordinate-38, this.pixelList[0].xCoordinate + 38, this.pixelList[0].yCoordinate-1, 1);
 
-            this.pixelList[i].xCoordinate = centerX + (distToCenterY);
-            this.pixelList[i].yCoordinate = centerY + (distToCenterX * -1);
+            for (let i = 1; i < this.pixelList.length; i++) {
+                let distToCenterX, distToCenterY;
+    
+                distToCenterX = this.pixelList[i].xCoordinate - centerX;
+                distToCenterY = this.pixelList[i].yCoordinate - centerY;
+    
+                this.grid.changeColor("rgb(12, 12, 71)");
+                this.grid.makeOrColorGrid(this.pixelList[i].xCoordinate+1, this.pixelList[i].yCoordinate-38, this.pixelList[i].xCoordinate + 38, this.pixelList[i].yCoordinate-1, 1);
+    
+                this.pixelList[i].xCoordinate = centerX + (distToCenterY);
+                this.pixelList[i].yCoordinate = centerY + (distToCenterX * -1);
+            }
         }
     }
 }
@@ -185,6 +196,10 @@ class Square extends Block {
         this.colored = "#FEFB34";
         this.height = 40;
     }
+
+    canRotate(farRight,farLeft) {
+        return false
+    }
 }
 
 class LBlock extends Block {
@@ -196,6 +211,11 @@ class LBlock extends Block {
 
         this.colored = "#FFC82E";
         this.height = 80;
+    }
+
+    canRotate(farRight,farLeft) {
+        if (farRight < 360 && farLeft > 40) return true;
+        return false;
     }
 }
 
@@ -209,6 +229,11 @@ class JBlock extends Block {
         this.colored = "#0341AE";
         this.height = 80;
     }
+
+    canRotate(farRight,farLeft) {
+        if (farRight < 360 && farLeft > 40) return true;
+        return false;
+    }
 }
 
 class TBlock extends Block {
@@ -220,6 +245,11 @@ class TBlock extends Block {
 
         this.colored = "#DD0AB2";
         this.height = 40;
+    }
+
+    canRotate(farRight,farLeft) {
+        if (farRight < 360 && farLeft > 40) return true;
+        return false;
     }
 }
 
@@ -233,6 +263,11 @@ class SBlock extends Block {
         this.colored = "#53DA3F";
         this.height = 40;
     }
+
+    canRotate(farRight,farLeft) {
+        if (farRight < 360 && farLeft > 40) return true;
+        return false;
+    }
 }
 
 class ZBlock extends Block {
@@ -245,6 +280,11 @@ class ZBlock extends Block {
         this.colored = "#FD3F59";
         this.height = 40;
     }
+
+    canRotate(farRight,farLeft) {
+        if (farRight < 360 && farLeft > 40) return true;
+        return false;
+    }
 }
 
 class Line extends Block {
@@ -256,6 +296,11 @@ class Line extends Block {
 
         this.colored = "#01EDFA";
         this.height = 120;
+    }
+
+    canRotate(farRight,farLeft) {
+        if (farRight < 320 && farLeft > 80) return true;
+        return false;
     }
 }
 
