@@ -22,6 +22,8 @@ if (paletteIn == "pastel") {
     palette = ["#dbedff", "#b6daff", "#a4d1ff", "#91c7ff", "#7fbeff", "#6cb4ff", "#47a0ff"];
 } else if (paletteIn == "gray") {
     palette = ["#ffffff", "#d5d5d5", "#aaaaaa", "#808080", "#555555", "#2b2b2b", "#1a1a1a"];
+} else if (paletteIn == "vri") {
+    palette = ["#f3eaf9", "#f1e3fc", "#ecd6fc", "#e9ccfc", "#e6c1ff", "#e1b7ff", "#dbaaff"];
 } else {
     palette = ["#FEFB34", "#FFC82E", "#0341AE", "#DD0AB2", "#53DA3F", "#FD3F59", "#01EDFA"];
 }
@@ -43,7 +45,7 @@ window.addEventListener("keydown", function (e) {
         return;
     }
     if (e.key == "ArrowDown" || e.key == "s") {
-        block.slowDrop();
+        score += block.slowDrop();
     }
     if (e.key == "ArrowLeft" || e.key == "a") {
         for (let i = 0; i < block.pixelList.length; i++){
@@ -80,12 +82,13 @@ window.addEventListener("load", function () {
         if (restart) {
             // console.log(block.pixelList[block.pixelList.length - 1])
             if (block.pixelList[0].yCoordinate - block.height <= 0) {
-                ctx.font = "50px Arial";
-                ctx.fillText("GAME OVER", 45, 300);
+                ctx.font = "50px Fantasy";
+                ctx.fillStyle = "white";
+                ctx.fillText("GAME OVER", 90, 300);
                 clearInterval();
             }
             else {
-                score += 40;
+                // score += 40;
                 pointTag.innerHTML = "Score: " + score;
                 restart = false;
                 createBlock(pixelGrid);
