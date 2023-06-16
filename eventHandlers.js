@@ -78,7 +78,7 @@ window.addEventListener("load", function () {
     // create next block
     v = setInterval(function () {
         if (restart) {
-            console.log(block.pixelList[block.pixelList.length - 1])
+            // console.log(block.pixelList[block.pixelList.length - 1])
             if (block.pixelList[0].yCoordinate - block.height <= 0) {
                 ctx.font = "50px Arial";
                 ctx.fillText("GAME OVER", 45, 300);
@@ -99,7 +99,7 @@ function createBlock(pixelGrid) {
     let v;
     // randomly pick a block type
     let rand = Math.floor(Math.random() * 7);
-    console.log(palette[0]);
+    // console.log(palette[0]);
     switch (rand) {
         case 0:
             block = new Square(160, 40, pixelGrid, palette[0]);
@@ -133,7 +133,7 @@ function createBlock(pixelGrid) {
                     gridList[block.pixelList[j].yCoordinate/40][block.pixelList[j].xCoordinate/40].changeAvailability();
                 }
                 restart = true;
-                // clearRow();
+                clearRow();
                 clearInterval(v);
                 break;
             }
@@ -145,19 +145,22 @@ function createBlock(pixelGrid) {
 function clearRow(){
     let check = false;
     for (let i = gridList.length-1; i >= 0; i--){
+        check = false;
         for (let j = 0; j < gridList[0].length; j++){
             if (gridList[i][j].isAvailable){
                 check = true;
                 break;
             }
         }
-        if (check){
+        console.log(check);
+        if (!check){
+            console.log("row");
             for (let k = i; k > 0; k--){
                 for (let j = 0; j < gridList[0].length; j++){
-                    let pix = gridList[k][j];
+                    let pix = gridList[k-1][j];
                     pix.yCoordinate += 40;
-                    gridList[k+1][j] = pix;
-                    pixelGrid.changeColor(pix.color);
+                    gridList[k][j] = pix;
+                    pixelGrid.changeColor(black);
                     pixelGrid.makeOrColorGrid(pix.xCoordinate + 1, pix.yCoordinate, pix.xCoordinate + 39, pix.yCoordinate+39, 1);
                 }
             }
