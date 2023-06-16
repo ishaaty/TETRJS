@@ -144,7 +144,7 @@ class Block {
         for (let i = 0; i < this.pixelList.length; i++) {
             let newY = this.pixelList[i].yCoordinate + (timesDrop*40) - 80;
     
-            this.grid.changeColor("rgb(25, 25, 135)");
+            this.grid.changeColor("rgb(16, 16, 92)");
             this.grid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 40);
     
             this.pixelList[i].yCoordinate = newY;
