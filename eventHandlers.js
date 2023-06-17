@@ -174,7 +174,7 @@ function clearRow(){
                     pix.yCoordinate += 40;
                     gridList[k][j] = pix;
                     pixelGrid.changeColor(pix.color);
-                    pixelGrid.makeOrColorGrid(pix.xCoordinate, pix.yCoordinate  - 39, pix.xCoordinate + 38, pix.yCoordinate, 1);
+                    pixelGrid.makeOrColorGrid(pix.xCoordinate, pix.yCoordinate  - 39, pix.xCoordinate + 39, pix.yCoordinate, 1);
                 }
             }
             console.log(gridList[gridList.length-1]);

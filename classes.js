@@ -9,7 +9,7 @@ class Pixel {
     constructor (xCoordinate, yCoordinate, color){
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
-        this.color = color || "rgb(16, 16, 92)";
+        this.color = color || "rgb(12, 12, 71)";
         this.isAvailable = true;
     }
 
@@ -56,7 +56,7 @@ class Block {
     constructor (startX, startY, grid, color){
         this.grid = grid;
         this.pixelList = [];
-        this.color = color || "rgb(16, 16, 92)";
+        this.color = color || "rgb(12, 12, 71)";
         this.pixelList.push(new Pixel(startX, startY, color));
     }
 
@@ -145,7 +145,7 @@ class Block {
         for (let i = 0; i < this.pixelList.length; i++) {
             let newY = this.pixelList[i].yCoordinate + (timesDrop*40) - 80;
     
-            this.grid.changeColor("rgb(16, 16, 92)");
+            this.grid.changeColor("rgb(25, 25, 135)");
             this.grid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 40);
     
             this.pixelList[i].yCoordinate = newY;
