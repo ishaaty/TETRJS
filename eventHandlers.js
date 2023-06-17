@@ -164,8 +164,8 @@ function clearRow(){
         }
         console.log(gridList);
         if (!check){
-            pixelGrid.changeColor("rgb(12, 12, 71)");
-            pixelGrid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 1);
+            // pixelGrid.changeColor("rgb(12, 12, 71)");
+            // pixelGrid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 1);
             // pixelGrid.changeColor("rgb(16, 16, 92)");
             // pixelGrid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 40);
             for (let k = i; k > 0; k--){
