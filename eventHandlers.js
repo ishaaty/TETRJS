@@ -40,6 +40,7 @@ for (let y = 0; y <= canvas.height; y += 40) {
 }
 
 let pixelGrid = gridList[0][0]; // contains coordinates (0,0)
+console.log(gridList[0][0].color);
 pixelGrid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 40);
 
 // movement based on input
@@ -153,7 +154,6 @@ function createBlock(pixelGrid) {
 
 function clearRow(){
     let check = false;
-    console.log(gridList[gridList.length-2]);
     for (let i = gridList.length-1; i >= 0; i--){
         check = false;
         for (let j = 0; j < gridList[0].length-1; j++){
@@ -162,18 +162,22 @@ function clearRow(){
                 break;
             }
         }
-        console.log(check);
+        console.log(gridList);
         if (!check){
-            console.log("row");
+            pixelGrid.changeColor("rgb(12, 12, 71)");
+            pixelGrid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 1);
+            // pixelGrid.changeColor("rgb(16, 16, 92)");
+            // pixelGrid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 40);
             for (let k = i; k > 0; k--){
                 for (let j = 0; j < gridList[0].length; j++){
                     let pix = gridList[k-1][j];
                     pix.yCoordinate += 40;
                     gridList[k][j] = pix;
                     pixelGrid.changeColor(pix.color);
-                    pixelGrid.makeOrColorGrid(pix.xCoordinate + 1, pix.yCoordinate, pix.xCoordinate + 39, pix.yCoordinate+39, 1);
+                    pixelGrid.makeOrColorGrid(pix.xCoordinate, pix.yCoordinate  - 39, pix.xCoordinate + 38, pix.yCoordinate, 1);
                 }
             }
+            console.log(gridList[gridList.length-1]);
         }
     }
 
