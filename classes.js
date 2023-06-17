@@ -82,6 +82,7 @@ class Block {
 
             this.pixelList[i].yCoordinate = newY;
         }
+        this.colorBlock();
     }
 
     moveRight(){ 

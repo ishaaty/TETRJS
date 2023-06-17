@@ -39,6 +39,9 @@ for (let y = 0; y <= canvas.height; y += 40) {
     tempList = [];
 }
 
+let pixelGrid = gridList[0][0]; // contains coordinates (0,0)
+pixelGrid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 40);
+
 // movement based on input
 window.addEventListener("keydown", function (e) {
     if (e.repeat) {
@@ -65,6 +68,8 @@ window.addEventListener("keydown", function (e) {
     }
     if (e.key == "ArrowUp" || e.key == "w") {
         block.rotate();
+        pixelGrid.changeColor(block.color);
+        block.colorBlock();
     }
     if (e.key == " ") {
         score += block.quickDrop();
@@ -74,8 +79,6 @@ window.addEventListener("keydown", function (e) {
 window.addEventListener("load", function () {
     console.log(palette)
     // creating the grid
-    let pixelGrid = gridList[0][0]; // contains coordinates (0,0)
-    pixelGrid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 40);
     createBlock(pixelGrid);
     // create next block
     v = setInterval(function () {
@@ -132,8 +135,11 @@ function createBlock(pixelGrid) {
         
         for (let i = 0; i < block.pixelList.length; i++){
             if (block.pixelList[i].yCoordinate == 800 || gridList[block.pixelList[i].yCoordinate/40+1][block.pixelList[i].xCoordinate/40].isAvailable == false){
+                pixelGrid.changeColor(block.color);
+                block.colorBlock();
                 for (let j = 0; j < block.pixelList.length; j++){
                     gridList[block.pixelList[j].yCoordinate/40][block.pixelList[j].xCoordinate/40].changeAvailability();
+                    gridList[block.pixelList[j].yCoordinate/40][block.pixelList[j].xCoordinate/40].changeColor(block.color);
                 }
                 restart = true;
                 clearRow();
@@ -147,9 +153,10 @@ function createBlock(pixelGrid) {
 
 function clearRow(){
     let check = false;
+    console.log(gridList[gridList.length-2]);
     for (let i = gridList.length-1; i >= 0; i--){
         check = false;
-        for (let j = 0; j < gridList[0].length; j++){
+        for (let j = 0; j < gridList[0].length-1; j++){
             if (gridList[i][j].isAvailable){
                 check = true;
                 break;
@@ -163,7 +170,7 @@ function clearRow(){
                     let pix = gridList[k-1][j];
                     pix.yCoordinate += 40;
                     gridList[k][j] = pix;
-                    pixelGrid.changeColor(black);
+                    pixelGrid.changeColor(pix.color);
                     pixelGrid.makeOrColorGrid(pix.xCoordinate + 1, pix.yCoordinate, pix.xCoordinate + 39, pix.yCoordinate+39, 1);
                 }
             }
