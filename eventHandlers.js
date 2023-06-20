@@ -2,6 +2,7 @@ let ctx = canvas.getContext("2d");
 let currentColor = document.querySelector("#currentColor");
 let clearBtn = document.querySelector("#clear");
 let pointTag = document.querySelector("#points")
+let lineTag = document.querySelector("#lines")
 let paletteIn = sessionStorage.getItem("first");
 let palette;
 let color = "black";
@@ -12,6 +13,7 @@ let tempList = [];
 let restart = false;
 let block;
 let score = 0;
+let lines = 0;
 
 // order: square, Lblock, Jblock, Tblock, Sblock, Zblock, line
 if (paletteIn == "pastel") {
@@ -94,6 +96,7 @@ window.addEventListener("load", function () {
             else {
                 // score += 40;
                 pointTag.innerHTML = "Score: " + score;
+                lineTag.innerHTML = "Lines: " + lines;
                 restart = false;
                 createBlock(pixelGrid);
             }
