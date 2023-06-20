@@ -62,6 +62,10 @@ img {
 }
 
 p {
-    margin-top: 50px;
+    margin-top: 75px;
     color: white;
+}
+
+#header {
+    text-decoration: underline;
 }
