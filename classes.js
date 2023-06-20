@@ -216,7 +216,7 @@ class LBlock extends Block {
     }
 
     canRotate(farRight,farLeft) {
-        if (farRight <= 360 && farLeft >= 40) return true;
+        if (farRight <= 360 && farLeft >= 0) return true;
         return false;
     }
 }
@@ -233,7 +233,7 @@ class JBlock extends Block {
     }
 
     canRotate(farRight,farLeft) {
-        if (farRight <= 360 && farLeft >= 40) return true;
+        if (farRight <= 320 && farLeft >= 0) return true;
         return false;
     }
 }
@@ -250,7 +250,7 @@ class TBlock extends Block {
     }
 
     canRotate(farRight,farLeft) {
-        if (farRight < 360 && farLeft > 40) return true;
+        if (farRight <= 360 && farLeft >= 0) return true;
         return false;
     }
 }
@@ -267,7 +267,7 @@ class SBlock extends Block {
     }
 
     canRotate(farRight,farLeft) {
-        if (farRight <= 360 && farLeft >= 40) return true;
+        if (farRight <= 360 && farLeft >= 0) return true;
         return false;
     }
 }
@@ -284,7 +284,7 @@ class ZBlock extends Block {
     }
 
     canRotate(farRight,farLeft) {
-        if (farRight <= 360 && farLeft >= 40) return true;
+        if (farRight <= 360 && farLeft >= 0) return true;
         return false;
     }
 }

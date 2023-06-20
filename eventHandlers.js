@@ -156,7 +156,7 @@ function createBlock(pixelGrid) {
 }
 
 function clearRow(){
-    let check = false;
+    // let check = false;
     for (let h = 0; h < 2; h++){
         for (let i = gridList.length-1; i >= 0; i--){
             check = false;
