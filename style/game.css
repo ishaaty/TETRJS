@@ -60,7 +60,7 @@ p {
 
 .container {
     display : grid;
-    grid-template-columns: 850px 200px;
+    grid-template-columns: 900px 200px;
 }
 
 img {
