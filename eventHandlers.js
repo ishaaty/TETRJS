@@ -166,12 +166,7 @@ function clearRow(){
                     break;
                 }
             }
-            console.log(gridList);
             if (!check){
-                // pixelGrid.changeColor("rgb(12, 12, 71)");
-                // pixelGrid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 1);
-                // pixelGrid.changeColor("rgb(16, 16, 92)");
-                // pixelGrid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 40);
                 for (let k = i; k > 0; k--){
                     for (let j = 0; j < gridList[0].length; j++){
                         let pix = gridList[k-1][j];
@@ -181,7 +176,7 @@ function clearRow(){
                         pixelGrid.makeOrColorGrid(pix.xCoordinate, pix.yCoordinate  - 39, pix.xCoordinate + 39, pix.yCoordinate, 1);
                     }
                 }
-                console.log(gridList[gridList.length-1]);
+                lines++;
             }
         }
     }
