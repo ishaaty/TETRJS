@@ -34,7 +34,7 @@ p, h2, audio {
 
 h2 {
     /*leaving space for next block, if doesn't happen, move up*/
-    margin-top: 300px;
+    margin-top: 270px;
     font-size: 1.8em;
     color: white;
     letter-spacing: 1.6px;
@@ -46,16 +46,24 @@ p {
     font-weight: lighter;
 }
 
-#points {
+#points, #lines {
     margin-top: 5px;
     padding: 5px;
     font-size: 1.6em;
-    border-width: 3px;
+    /* border-width: 3px;
     border-style: solid;
-    /* border-color:rgb(53, 53, 226); */
-    border-color: white;
+    border-color:rgb(53, 53, 226);
+    border-color: white; */
     width: 320px;
 }
+
+#points {
+    border-top: 3px solid white;
+}
+
+/* #lines {
+    border-bottom: 3px solid white;
+} */
 
 .container {
     display : grid;

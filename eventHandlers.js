@@ -2,6 +2,7 @@ let ctx = canvas.getContext("2d");
 let currentColor = document.querySelector("#currentColor");
 let clearBtn = document.querySelector("#clear");
 let pointTag = document.querySelector("#points")
+let lineTag = document.querySelector("#lines")
 let paletteIn = sessionStorage.getItem("first");
 let palette;
 let color = "black";
@@ -12,6 +13,7 @@ let tempList = [];
 let restart = false;
 let block;
 let score = 0;
+let lines = 0;
 
 // order: square, Lblock, Jblock, Tblock, Sblock, Zblock, line
 if (paletteIn == "pastel") {
@@ -94,6 +96,7 @@ window.addEventListener("load", function () {
             else {
                 // score += 40;
                 pointTag.innerHTML = "Score: " + score;
+                lineTag.innerHTML = "Lines: " + lines;
                 restart = false;
                 createBlock(pixelGrid);
             }
@@ -164,10 +167,6 @@ function clearRow(){
         }
         console.log(gridList);
         if (!check){
-            // pixelGrid.changeColor("rgb(12, 12, 71)");
-            // pixelGrid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 1);
-            // pixelGrid.changeColor("rgb(16, 16, 92)");
-            // pixelGrid.makeOrColorGrid(0, 0, canvas.width, canvas.height, 40);
             for (let k = i; k > 0; k--){
                 for (let j = 0; j < gridList[0].length; j++){
                     let pix = gridList[k-1][j];
@@ -177,6 +176,7 @@ function clearRow(){
                     pixelGrid.makeOrColorGrid(pix.xCoordinate, pix.yCoordinate  - 39, pix.xCoordinate + 39, pix.yCoordinate, 1);
                 }
             }
+            lines++;
             console.log(gridList[gridList.length-1]);
         }
     }
