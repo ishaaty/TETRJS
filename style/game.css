@@ -33,11 +33,12 @@ p, h2, audio {
 }
 
 h2 {
-    /*leaving space for next block, if doesn't happen, move up*/
+    width: 325px;
     margin-top: 270px;
     font-size: 1.8em;
     color: white;
     letter-spacing: 1.6px;
+    border-bottom: 3px solid white;
 }
 
 p {
@@ -50,20 +51,12 @@ p {
     margin-top: 5px;
     padding: 5px;
     font-size: 1.6em;
-    /* border-width: 3px;
-    border-style: solid;
-    border-color:rgb(53, 53, 226);
-    border-color: white; */
     width: 320px;
 }
 
 #points {
     border-top: 3px solid white;
 }
-
-/* #lines {
-    border-bottom: 3px solid white;
-} */
 
 .container {
     display : grid;
@@ -80,7 +73,13 @@ img {
 }
 
 audio {
-    margin-top: 10px;
+    margin-top: 60px;
     height: 2em;
     width: 20em;
+}
+
+#citation {
+    width: 325px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid white;
 }
